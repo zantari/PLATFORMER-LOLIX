@@ -9,6 +9,7 @@ var pomocniczazmiennadokurwateleportacjizlobbydolevela:int = 0
 func _on_body_entered(body):
 	
 	if body is Player: 
+		
 		print("hello world")
 		entered = true
 		if pomocniczazmiennadokurwateleportacjizlobbydolevela == 0:
@@ -21,6 +22,7 @@ func _on_body_entered(body):
 			
 
 func _on_body_exited(_body):
+	player.has_gun = true
 	entered = false
 
 func _process(_delta):

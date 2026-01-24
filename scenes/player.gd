@@ -51,7 +51,7 @@ func isShieldOnFunc():
 
 	
 func _ready():
-	has_gun = true
+	
 	
 	
 	
@@ -64,12 +64,14 @@ func _ready():
 	if $AnimatedSprite2D.material:
 		$AnimatedSprite2D.material.set_shader_parameter("amount", 0.0)
 	 
-	if Global.target_spawn_name == 'MenuStart':
+	if Global.target_spawn_name == 'MenuStart': #jak nie dziala
 		Global.last_checkpoint_pos = Vector2.ZERO 
 		set_player_to_spawn.call_deferred()
+		print("1if")
 		
-	elif Global.last_checkpoint_pos != Vector2.ZERO:
+	elif Global.last_checkpoint_pos != Vector2.ZERO: #jak dziala
 		global_position = Global.last_checkpoint_pos
+		print("2if")
 		
 		
 	elif Global.spawn_position != Vector2.ZERO:
@@ -78,7 +80,7 @@ func _ready():
 		# TUTAJ DODAJEMY EFEKT:
 		start_portal_effect(false) 
 		Global.spawn_position = Vector2.ZERO
-	print(Global.target_spawn_name)
+		print("3if")
 	get_tree().call_group("diamondLabel", "wyswietlijDiamenty")
 		
 
@@ -114,24 +116,23 @@ func spiderOnHeadFunc():
 			spider.zeskocz()
 			$ShieldArea/cooldownTarczy.paused = false
 			jumpCounter = 0 
+			
+const JUMP_FORCE = -600.0        #
+
+
+const GRAVITY_RISING = 400.0     
+const GRAVITY_FALLING = 1000.0   # Ciężka grawitacja (jak spadasz lub puściłeś spację)
+const SPEED_WALK = 160.0        
+const SPEED_SPRINT = 250.0
 		
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
-	
+
 	cooldownAnim()
 	shieldCooldownAnim()	
-	
-	
-		
-	
-	
-	if spider:
-		print(spider)
-		spiderOnHeadFunc()
-		
-	cooldownAnim()
-	
+	if spider: spiderOnHeadFunc()
 	if isGhostInside:
+
 		if isShieldOn:
 			isShieldOn = false
 			$ShieldArea/AnimatedSprite2D.visible = false
@@ -140,57 +141,54 @@ func _process(delta: float) -> void:
 			$ShieldArea/cooldownTarczy.start()
 		else:
 			$ShieldArea/cooldownTarczy.paused = false
-			
-			
-		
 
 	if is_teleporting:
 		velocity = Vector2.ZERO
-
-	
-	if is_teleporting:
-		velocity = Vector2.ZERO
-		direction_x=0
+		direction_x = 0
 		set_anim('jump')
-
 		move_and_slide()
-		return 
-		
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = -150
-			jumps_left = max_jumps - 1
-		elif jumps_left > 0:
-			velocity.y = -150
-			jumps_left -= 1
+		return
+
+
+	var current_gravity = GRAVITY_FALLING 
+
+
+	if velocity.y < 0 and Input.is_action_pressed("jump"):
+
+		current_gravity = GRAVITY_RISING
+
+
+	velocity.y += current_gravity * delta
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_FORCE
+
+	var current_speed = SPEED_WALK
 	if Input.is_action_pressed("Sprint") and stamina > 0 and can_sprint:
-		speed = 150
+		current_speed = SPEED_SPRINT
 		stamina -= stamina_drain * delta
 		if stamina <= 0:
 			stamina = 0
 			can_sprint = false
-			speed = 120
+			current_speed = SPEED_WALK
 	else:
-		speed = 120
+		current_speed = SPEED_WALK
 		if stamina < max_stamina:
 			stamina += stamina_regen * delta
 		if stamina >= 20:
 			can_sprint = true
 
 	get_input()
-	velocity.x = direction_x * speed 
-	move_and_slide()
-	gravity()
+	velocity.x = direction_x * current_speed
 
-	get_animation()
+	move_and_slide()
 
 	if can_animate:
 		get_animation()
-
 	get_facing_direction()
 
 
-	
+
 
 
 func get_input():

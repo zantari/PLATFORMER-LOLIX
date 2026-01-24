@@ -5,7 +5,7 @@ var teleporting := false
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready() -> void:
-	$ColorRect/Label.text = str(Global.level_data["level1"]) + "/25"
+	$ColorRect/Label.text = str(Global.level_data["level1"]) + "/5"
 func _on_body_entered(body):
 	if body is Player: # Bezpieczniejsze sprawdzenie
 
@@ -21,6 +21,7 @@ func _process(_delta):
 			teleporting = true
 			if player:
 				player.start_portal_effect(true) 
+				
 			$EnterTimer.start()
 			
 
@@ -29,3 +30,4 @@ func _on_enter_timer_timeout():
 	Global.target_spawn_name = "MenuStart" 
 	Global.spawn_position = Vector2(295, 405) 
 	GlobalLoader.load_level("res://scenes/level_2.tscn") 
+	Global.restart_entire_run()

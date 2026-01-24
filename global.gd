@@ -9,7 +9,7 @@ var last_checkpoint_pos : Vector2 = Vector2.ZERO
 var permanent_diamonds = 0    # Ilość bezpiecznych diamentów
 var temporary_diamonds = 0    # Ilość tymczasowych diamentów
 var lobbyScore = 0
-
+var lastSlayer:String = "xd"
 
 
 
@@ -69,9 +69,27 @@ func restart_entire_run():
 	get_tree().reload_current_scene()
 
 func returnLobby(nazwaLVL):
-	if level_data.has(nazwaLVL) and level_data[nazwaLVL] <= temporary_diamonds:
-		level_data[nazwaLVL] = temporary_diamonds
+
+	var current_run_total = permanent_diamonds + temporary_diamonds 
+	
+
+	if level_data.has(nazwaLVL) and level_data[nazwaLVL] < current_run_total:
+		level_data[nazwaLVL] = current_run_total # Zapisz NOWY rekord
+		
+	   
 		lobbyScore = 0
 		for diament in level_data.values():
 			lobbyScore += diament
-	print("Powrót do lobby...")
+	else:
+		lobbyScore = 0
+		for diament in level_data.values():
+			lobbyScore += diament
+			
+	print("Powrót do lobby, wynik runa: ", current_run_total)
+	permanent_diamonds = 0
+	temporary_diamonds = 0
+	permanent_collected_list.clear()
+	temp_collected_list.clear()
+	
+	diamonds_updated.emit(0)
+	

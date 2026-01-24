@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://b6io4kes7e1fd" path="res://graphic/filar.png" id="7_wc255"]
 [ext_resource type="Texture2D" uid="uid://bsx2bv5cy83en" path="res://graphic/portals/New Piskel (3).png" id="8_8c41q"]
 [ext_resource type="PackedScene" uid="uid://bqe6ey42tjo5b" path="res://scenes/portal_entrence_1.tscn" id="10_olg7q"]
-[ext_resource type="Script" uid="uid://dnstjf8yr7lcu" path="res://scenes/camera_2d.gd" id="11_8iemx"]
 [ext_resource type="Texture2D" uid="uid://m6q035v2tw1e" path="res://graphic/portalewszystkie.png" id="11_xy2fk"]
 [ext_resource type="Texture2D" uid="uid://dqmbci4fiqp5d" path="res://graphic/windowFrame.png" id="12_8gofh"]
 [ext_resource type="PackedScene" uid="uid://sm2eeiuqit6o" path="res://scenes/stamina.tscn" id="13_fpun6"]
@@ -23,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d1bkat54hg0fl" path="res://graphic/windowskarb.png" id="15_5k0ak"]
 [ext_resource type="Texture2D" uid="uid://dbf4wl1y13co" path="res://graphic/dorsy2.png" id="17_556r4"]
 [ext_resource type="Texture2D" uid="uid://cwypyf5acg6wh" path="res://graphic/courtain.png" id="17_cmcjb"]
+[ext_resource type="Script" uid="uid://bst18w2ks3wk3" path="res://scenes/cameraLevel1.gd" id="22_7agi7"]
 [ext_resource type="PackedScene" uid="uid://jve8mq13v6f2" path="res://scenes/entrence_to_level_2.tscn" id="23_556r4"]
 [ext_resource type="Texture2D" uid="uid://caih331ts2232" path="res://graphic/swiecawielka.png" id="24_3ies3"]
 [ext_resource type="Texture2D" uid="uid://birgs7tq0nl6" path="res://graphic/wielkasweica2.png" id="25_xy2fk"]
@@ -979,17 +979,19 @@ tile_set = SubResource("TileSet_w3o6u")
 [node name="Player" parent="." instance=ExtResource("4_ppgk2")]
 position = Vector2(944, 263)
 
-[node name="Camera2D2" type="Camera2D" parent="Player"]
-position = Vector2(0, -1)
+[node name="Camera2D3" type="Camera2D" parent="Player"]
+position = Vector2(4, 5)
 offset = Vector2(0, -40)
 zoom = Vector2(5.5, 5.5)
+process_callback = 0
 limit_left = 0
-limit_top = 120
+limit_top = 119
 limit_right = 1872
+limit_bottom = 399
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_vertical_enabled = true
-script = ExtResource("11_8iemx")
+script = ExtResource("22_7agi7")
 
 [node name="PlayerTimer" type="Timer" parent="Player" groups=["Player"]]
 one_shot = true

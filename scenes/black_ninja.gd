@@ -7,6 +7,8 @@ var direction_x := 1
 var speed := 60
 var vignette_tween: Tween
 
+@export var DAMAGE: int = 10
+
 
 func get_dmg(dmg, area):
 	if area.is_in_group("pocisk"):
@@ -25,7 +27,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_head_shot_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("pocisk"):
-		get_dmg(3, area)
+		get_dmg(5, area)
 		
 		area.queue_free()
 	
@@ -43,6 +45,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		var player = body
 		
+		
 		# 1. Sprawdzamy czy tarcza jest włączona (używając Twojej funkcji z gracza)
 		var is_shielded = false
 		if player.has_method("isShieldOnFunc"):
@@ -56,7 +59,9 @@ func _on_body_entered(body: Node2D) -> void:
 		# 3. Logika obrażeń - tylko jeśli tarcza NIE jest aktywna
 		if not is_shielded:
 			if player.has_method("get_damage"):
-				player.get_damage(40)
+				player.get_damage(DAMAGE)
+				if player.health<=0:
+					Global.lastSlayer = "zombie"
 			else:
 				respawn_player(player)
 		else:
