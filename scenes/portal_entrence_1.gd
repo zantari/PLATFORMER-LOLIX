@@ -28,4 +28,4 @@ func _on_enter_timer_timeout():
 	Global.restart_entire_run()
 	Global.target_spawn_name = "MenuStart" 
 	Global.spawn_position = Vector2(295, 405) 
-	GlobalLoader.load_level("res://scenes/portal_one_menu.tscn") 
+	GlobalLoader.load_level("res://scenes/level_2.tscn") 

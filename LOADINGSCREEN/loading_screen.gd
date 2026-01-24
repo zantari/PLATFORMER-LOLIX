@@ -1,6 +1,6 @@
 extends Control
 
-@onready var progress_bar = $ProgressBar # Upewnij się, że nazwa w drzewku to ProgressBar!
+@onready var progress_bar = $CanvasLayer/MarginContainer/ProgressBar # Upewnij się, że nazwa w drzewku to ProgressBar!
 
 func _ready():
 	if GlobalLoader.target_scene_path == "":

@@ -27,7 +27,12 @@ var isDying = false
 
 func _ready():
 	print("test")
-	position = marker1.position
+	$AnimatedSprite2D/HealthBar.visible = false
+	
+	if marker1:
+		position = marker1.position
+	else:
+		queue_free()
 
 func _process(delta):
 	

@@ -8,14 +8,13 @@ var pomocniczazmiennadokurwateleportacjizlobbydolevela:int = 0
 
 func _on_body_entered(body):
 	
-	if body is Player: # Bezpieczniejsze sprawdzenie
+	if body is Player: 
 		print("hello world")
 		entered = true
 		if pomocniczazmiennadokurwateleportacjizlobbydolevela == 0:
 			get_tree().get_first_node_in_group("Player").zmianaCanAnimate()
 			get_tree().get_first_node_in_group("Player").set_anim('jump')
 			
-			print("tluste dupsko")
 			pomocniczazmiennadokurwateleportacjizlobbydolevela+=1
 			get_tree().get_first_node_in_group("Player").start_portal_effect(true)
 			$TimerZebyDzialalo.start()

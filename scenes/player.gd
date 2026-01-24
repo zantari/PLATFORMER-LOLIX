@@ -51,6 +51,7 @@ func isShieldOnFunc():
 
 	
 func _ready():
+	has_gun = true
 	
 	
 	
@@ -59,10 +60,11 @@ func _ready():
 	shield_bar.visible = true # Pasek tarczy ma być widoczny
 	shield_bar.max_value = 10.0 # Standardowy cooldown
 	shield_bar.value = 10.0     # Na start tarcza jest gotowa (pełna)
+	
 	if $AnimatedSprite2D.material:
 		$AnimatedSprite2D.material.set_shader_parameter("amount", 0.0)
-	
-	if Global.target_spawn_name != "":
+	 
+	if Global.target_spawn_name == 'MenuStart':
 		Global.last_checkpoint_pos = Vector2.ZERO 
 		set_player_to_spawn.call_deferred()
 		
@@ -71,10 +73,12 @@ func _ready():
 		
 		
 	elif Global.spawn_position != Vector2.ZERO:
+		
 		global_position = Global.spawn_position
 		# TUTAJ DODAJEMY EFEKT:
 		start_portal_effect(false) 
 		Global.spawn_position = Vector2.ZERO
+	print(Global.target_spawn_name)
 	get_tree().call_group("diamondLabel", "wyswietlijDiamenty")
 		
 

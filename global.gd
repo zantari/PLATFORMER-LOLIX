@@ -51,6 +51,7 @@ func player_died():
 	diamonds_updated.emit(permanent_diamonds)
 	
 	
+	
 	get_tree().reload_current_scene()
 
 func restart_entire_run():
