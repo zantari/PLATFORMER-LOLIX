@@ -7,6 +7,8 @@ extends Area2D
 var entered: bool = false
 var teleporting: bool = false
 
+@export var ktoryLevel = "level1"
+
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	if _body is Player:
 		var player = _body
@@ -48,4 +50,4 @@ func start_teleportation():
 	
 	# Zmiana sceny
 
-	Global.returnLobby("level1", target_scene_path)
+	Global.returnLobby(ktoryLevel, target_scene_path)

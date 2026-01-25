@@ -7,6 +7,7 @@ var ui_tween: Tween
 @onready var rect = $CheckpointUI/ColorRect
 @onready var btn = $CheckpointUI/SKIP
 @onready var sprite = $Sprite2D
+@export var tresc:String = "WSAD/ARROWS: MOVEMENT\nE/LMB: SHOOT\nQ: SHIELD"
 
 func _ready():
 
@@ -35,7 +36,7 @@ func start_sequence():
 	if ui_tween: ui_tween.kill()
 	
 
-	label.text = "WSAD/ARROWS: MOVEMENT\nE/LMB: SHOOT\nQ: SHIELD"
+	label.text = tresc
 	label.visible = true
 	rect.visible = true
 	btn.visible = true
