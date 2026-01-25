@@ -73,8 +73,9 @@ func _on_yes_pressed() -> void:
 		get_tree().change_scene_to_file("res://scenes/level.tscn")
 	elif cr == "reset":
 		resume()
+		Global.target_spawn_name = 'MenuStart'
+		Global.restart_entire_run()
 		cr = "nic"
-		get_tree().reload_current_scene()
 		
 	
 

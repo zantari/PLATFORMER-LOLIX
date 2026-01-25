@@ -9,15 +9,27 @@ var teleporting: bool = false
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	if _body is Player:
+		var player = _body
 		
+		player.can_shoot = false
+		var label = $Label
+		label.modulate.a = 1.0 
+		label.visible = true
+
+		var pulse = create_tween().set_loops()
+		
+		pulse.tween_property(label, "modulate:a", 0.3, 0.5).set_trans(Tween.TRANS_SINE)
+		pulse.tween_property(label, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE)
+
 		entered = true
 
 func _on_body_exited(_body: PhysicsBody2D) -> void:
 	if _body is Player:
+		$Label.visible = false
 		entered = false
 
 func _process(_delta: float) -> void:
-	if entered and not teleporting and Input.is_action_just_pressed("ui_accept"):
+	if entered and not teleporting and Input.is_action_just_pressed("shoot"):
 		start_teleportation()
 
 func start_teleportation():
@@ -35,5 +47,5 @@ func start_teleportation():
 	Global.target_spawn_name = target_spawn_name
 	
 	# Zmiana sceny
-	get_tree().change_scene_to_file(target_scene_path)
-	Global.returnLobby("level1")
+
+	Global.returnLobby("level1", target_scene_path)
