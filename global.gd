@@ -21,7 +21,7 @@ var temp_collected_list: Array = []
 
 var level_data = {
 	"level1": 0,
-	"level2": 2
+	"level2": 0
 }
 
 var level_deaths = {
@@ -86,10 +86,12 @@ func returnLobby(nazwaLVL, _target_scene_path = ""):
 	var current_run_total = permanent_diamonds + temporary_diamonds 
 	
 	if level_data.has(nazwaLVL):
-		passedLevel = level_data[nazwaLVL]
+		
 		
 		
 		if level_data[nazwaLVL] == 0:
+			naIleDiamentow = 5
+		else:
 			naIleDiamentow = 5
 	
 
@@ -105,7 +107,7 @@ func returnLobby(nazwaLVL, _target_scene_path = ""):
 		for diament in level_data.values():
 			lobbyScore += diament
 			
-	print("Powrót do lobby, wynik runa: ", current_run_total)
+	print("Powrót do lobby, wynik runa: ", current_run_total, "ukonczony poziom ", passedLevel)
 	uzbieraneDiamenty = current_run_total
 	permanent_diamonds = 0
 	temporary_diamonds = 0

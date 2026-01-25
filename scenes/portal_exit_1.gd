@@ -5,7 +5,7 @@ var entered := false
 var teleporting := false
 var pomocniczazmiennadokurwateleportacjizlobbydolevela:int = 0
 @onready var player = get_tree().get_first_node_in_group("Player")
-
+@export var pozycjagraczalobby: Vector2 = Vector2(295, 270) 
 func _on_body_entered(body):
 	
 	if body is Player: 
@@ -34,8 +34,8 @@ func _process(_delta):
 			$EnterTimer.start()
 
 func _on_enter_timer_timeout():
-	Global.target_spawn_name = "MenuStart" 
-	Global.spawn_position = Vector2(295, 405) 
+	Global.spawn_position = pozycjagraczalobby
+	Global.last_checkpoint_pos = pozycjagraczalobby
 	get_tree().change_scene_to_file("res://scenes/level.tscn")
 
 

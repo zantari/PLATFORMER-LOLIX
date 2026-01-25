@@ -3,12 +3,11 @@ extends Area2D
 @export_group("Ustawienia Przejścia")
 @export_file("*.tscn") var target_scene_path: String # Wybierasz scenę z listy
 @export var target_spawn_name: String = "DefaultSpawn" # Nazwa Markera w następnej scenie
-
 var entered: bool = false
 var teleporting: bool = false
-
+@export var passedLevelodejmij1 = 0 
 @export var ktoryLevel = "level1"
-
+@export var kordyLobby: Vector2 = Vector2(317, 286)
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	if _body is Player:
 		var player = _body
@@ -47,7 +46,8 @@ func start_teleportation():
 	
 	# ZAPISUJEMY NAZWĘ PUNKTU W GLOBALU
 	Global.target_spawn_name = target_spawn_name
+	Global.passedLevel = passedLevelodejmij1
 	
 	# Zmiana sceny
-
+	Global.last_checkpoint_pos = kordyLobby
 	Global.returnLobby(ktoryLevel, target_scene_path)

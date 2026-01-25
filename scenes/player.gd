@@ -67,10 +67,13 @@ func _ready():
 	if Global.target_spawn_name == 'MenuStart': #jak nie dziala
 		Global.last_checkpoint_pos = Vector2.ZERO 
 		set_player_to_spawn.call_deferred()
+		
 		print("1if")
 		
 	elif Global.last_checkpoint_pos != Vector2.ZERO: #jak dziala
 		global_position = Global.last_checkpoint_pos
+		Global.last_checkpoint_pos = Vector2.ZERO 
+		set_player_to_spawn.call_deferred()
 		print("2if")
 		
 		

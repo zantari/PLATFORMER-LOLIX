@@ -977,7 +977,7 @@ tile_map_data = PackedByteArray("AAAYABAAAQAAAAAAAAAYABEAAQAAAAEAAAAYABIAAQAAAAI
 tile_set = SubResource("TileSet_w3o6u")
 
 [node name="Player" parent="." instance=ExtResource("4_ppgk2")]
-position = Vector2(944, 263)
+position = Vector2(941, 278)
 
 [node name="Camera2D3" type="Camera2D" parent="Player"]
 position = Vector2(4, 5)
@@ -1001,7 +1001,7 @@ one_shot = true
 [node name="Portals" type="Node2D" parent="."]
 
 [node name="PortalEntrence1" parent="Portals" instance=ExtResource("10_olg7q")]
-position = Vector2(312, 285)
+position = Vector2(310, 277)
 
 [node name="entrenceToLevel2" parent="Portals" instance=ExtResource("23_556r4")]
 position = Vector2(617, 285)
@@ -1117,7 +1117,7 @@ texture = SubResource("GradientTexture2D_cmcjb")
 [node name="diamondCounter" parent="." instance=ExtResource("28_556r4")]
 
 [node name="MenuSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(938, 259)
+position = Vector2(940, 266)
 
 [node name="MenuStart" type="Marker2D" parent="."]
 position = Vector2(312, 282)
@@ -1130,6 +1130,12 @@ visible = false
 
 [node name="undermapteleport" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("28_7agi7")]
 position = Vector2(1074, 459)
+collision_layer = 32
+collision_mask = 2
+spawn_point = NodePath("../MenuSpawnPoint")
+
+[node name="undermapteleport2" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("28_7agi7")]
+position = Vector2(1009, -438)
 collision_layer = 32
 collision_mask = 2
 spawn_point = NodePath("../MenuSpawnPoint")
