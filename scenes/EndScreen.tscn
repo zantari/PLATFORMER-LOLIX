@@ -69,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -217.0
-offset_top = -119.0
-offset_right = 203.0
-offset_bottom = -62.0
+offset_left = 109.0
+offset_top = -93.0
+offset_right = 529.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
@@ -82,6 +82,48 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qfurf")
 theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
-text = "CONTINUE"
+text = "NEXT"
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -541.0
+offset_top = -95.0
+offset_right = -285.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.76414543, 0.9128155, 0.8766447, 1)
+theme_override_colors/font_hover_color = Color(0.093936585, 0.69950724, 0.6605753, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qfurf")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
+text = "LOBBY"
+
+[node name="Button3" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -94.0
+offset_right = 37.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.76414543, 0.9128155, 0.8766447, 1)
+theme_override_colors/font_hover_color = Color(0.093936585, 0.69950724, 0.6605753, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qfurf")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
+text = "AGAIN"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction = 1 # 1 = DÓŁ, -1 = GÓRA
-var speed := 150
+var speed := 200
 var vignette_tween: Tween
 
 func _ready() -> void:

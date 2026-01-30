@@ -1334,33 +1334,39 @@ position = Vector2(582, 315)
 rotation = 3.1415927
 
 [node name="fireballDispenser" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(818, 323)
+position = Vector2(820, 310)
 
 [node name="fireballDispenser2" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(903, 322)
+position = Vector2(905, 309)
 
 [node name="fireballDispenser3" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(984, 322)
+position = Vector2(984, 309)
 
 [node name="fireballDispenser10" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(3112, 642)
+position = Vector2(3113, 629)
 
 [node name="fireballDispenser11" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(3542, 642)
+position = Vector2(3543, 629)
 
 [node name="fireballDispenser12" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(3655, 641)
+position = Vector2(3656, 629)
 
 [node name="fireballDispenser13" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(3770, 642)
+position = Vector2(3770, 629)
+
+[node name="fireballDispenser15" parent="Enemies" instance=ExtResource("37_v6tvd")]
+position = Vector2(3986, 1029)
+
+[node name="fireballDispenser16" parent="Enemies" instance=ExtResource("37_v6tvd")]
+position = Vector2(3904, 1029)
 
 [node name="fireballDispenser4" parent="Enemies" instance=ExtResource("37_v6tvd")]
-position = Vector2(2365, 642)
+position = Vector2(2364, 629)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Enemies/fireballDispenser4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/fireballDispenser4/StaticBody2D"]
-position = Vector2(0, -10.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_454oc")
 
 [node name="fireballDispenser5" parent="Enemies" instance=ExtResource("37_v6tvd")]
@@ -2042,17 +2048,17 @@ destroy_time = 0.7
 [node name="ShakingFloor2" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(1375, 794)
 shake_power = 2.0
-destroy_time = 0.7
+destroy_time = 1.0
 
 [node name="ShakingFloor4" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(1564, 779)
 shake_power = 2.0
-destroy_time = 0.7
+destroy_time = 1.0
 
 [node name="ShakingFloor5" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(1745, 788)
 shake_power = 2.0
-destroy_time = 0.7
+destroy_time = 1.0
 
 [node name="ShakingFloor7" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(4112, 806)
@@ -2067,7 +2073,7 @@ destroy_time = 0.7
 [node name="ShakingFloor6" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(1920, 769)
 shake_power = 2.0
-destroy_time = 0.7
+destroy_time = 1.0
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PortalTimer" to="Player" method="_on_portal_timer_timeout"]

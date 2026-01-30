@@ -21,12 +21,14 @@ var temp_collected_list: Array = []
 
 var level_data = {
 	"level1": 0,
-	"level2": 0
+	"level2": 0,
+	"level3":0
 }
 
 var level_deaths = {
 	"level1": 0,
-	"level2": 1
+	"level2": 1,
+	"level3": 0
 }
 
 
