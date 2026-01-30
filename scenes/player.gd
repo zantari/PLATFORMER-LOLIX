@@ -24,7 +24,6 @@ var can_regenerate := false
 @onready var entered = false
 @onready var shield_bar = $shieldBarCanv/shieldBar # Dostosuj ścieżkę do swojego paska tarczy
 @onready var shield_label = $shieldBarCanv/ShieldTimerLabel # Dostosuj ścieżkę
-
 var isDying = false
 var can_animate = true
 
@@ -251,12 +250,12 @@ func get_damage(amount):
 		
 		if isShieldOn:
 			amount = 0
-			isHittedDuringShield = true
-			isShieldOn = false
-			$ShieldArea/AnimatedSprite2D.visible = false
-			can_use_shield = false
-			$ShieldArea/trwanieTarczy.stop()
-			$ShieldArea/cooldownTarczy.start()
+			#isHittedDuringShield = true
+			#isShieldOn = false
+			#$ShieldArea/AnimatedSprite2D.visible = false
+			#can_use_shield = false
+			#$ShieldArea/trwanieTarczy.stop()
+			#$ShieldArea/cooldownTarczy.start()
 			
 			
 		health -= amount

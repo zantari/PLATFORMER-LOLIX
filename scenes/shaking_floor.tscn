@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckdlv04tkolky"]
+
+[ext_resource type="Script" uid="uid://bb4evjcpc68of" path="res://scenes/shaking_floor.gd" id="1_o653w"]
+[ext_resource type="Texture2D" uid="uid://44x0ppusrtx8" path="res://graphic/sciana13.png" id="1_wut3k"]
+[ext_resource type="Texture2D" uid="uid://dch4iocgyuf7l" path="res://graphic/lamanapodlogatest67.png" id="3_sj1x5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o653w"]
+texture = ExtResource("1_wut3k")
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:8/0 = 0
+0:9/0 = 0
+0:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+0:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4yens"]
+texture = ExtResource("3_sj1x5")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sj1x5"]
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_o653w")
+sources/1 = SubResource("TileSetAtlasSource_4yens")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yens"]
+size = Vector2(64, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o653w"]
+size = Vector2(64, 11)
+
+[node name="ShakingFloor" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_o653w")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Area2D"]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_sj1x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 4.5)
+shape = SubResource("RectangleShape2D_4yens")
+
+[node name="kolizja dochodzenia" type="CollisionShape2D" parent="."]
+position = Vector2(16, 5.5)
+shape = SubResource("RectangleShape2D_o653w")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

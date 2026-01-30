@@ -1100,9 +1100,6 @@ position = Vector2(1338, 72)
 [node name="Torch7" parent="Torches" instance=ExtResource("22_0lkga")]
 position = Vector2(1544, 72)
 
-[node name="Torch8" parent="Torches" instance=ExtResource("22_0lkga")]
-position = Vector2(1745, 72)
-
 [node name="Torch9" parent="Torches" instance=ExtResource("22_0lkga")]
 position = Vector2(1134, 400)
 
@@ -1939,8 +1936,8 @@ energy = 2.0
 texture = SubResource("GradientTexture2D_sjk68")
 
 [node name="PointLight2D18" type="PointLight2D" parent="Lights"]
-position = Vector2(1742, 53)
-scale = Vector2(1.1640611, 1.0585936)
+position = Vector2(1742, 53.062504)
+scale = Vector2(1.1640611, 1.0605469)
 color = Color(0.8834339, 0.42463818, 1.92523e-06, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_sjk68")

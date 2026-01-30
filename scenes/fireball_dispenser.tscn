@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkdfccv3t348p"]
+
+[ext_resource type="Script" uid="uid://brksrty75pso5" path="res://fireball_dispenser.gd" id="1_mcl1d"]
+[ext_resource type="Texture2D" uid="uid://c660jdatcvpuw" path="res://icon.svg" id="2_kb18j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0nv7"]
+size = Vector2(35, 33)
+
+[node name="fireballDispenser" type="Area2D"]
+script = ExtResource("1_mcl1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.0000019, 0.5000019)
+scale = Vector2(0.28125, 0.2734375)
+texture = ExtResource("2_kb18j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x0nv7")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_t_imer_timeout"]
