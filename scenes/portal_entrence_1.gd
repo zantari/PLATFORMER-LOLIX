@@ -17,7 +17,7 @@ func _on_body_exited(_body):
 
 func _process(_delta):
 	if entered and not teleporting:
-		if Input.is_action_just_pressed("shoot"):
+		if Input.is_action_just_pressed("teleport"):
 			teleporting = true
 			if player:
 				player.start_portal_effect(true) 

@@ -30,7 +30,7 @@ func _on_body_exited(_body: PhysicsBody2D) -> void:
 		entered = false
 
 func _process(_delta: float) -> void:
-	if entered and not teleporting and Input.is_action_just_pressed("shoot"):
+	if entered and not teleporting and Input.is_action_just_pressed("teleport"):
 		start_teleportation()
 
 func start_teleportation():
@@ -50,4 +50,6 @@ func start_teleportation():
 	
 	# Zmiana sceny
 	Global.last_checkpoint_pos = kordyLobby
+	if Global.currentLevel==(passedLevelodejmij1):
+		Global.currentLevel += 1
 	Global.returnLobby(ktoryLevel, target_scene_path)

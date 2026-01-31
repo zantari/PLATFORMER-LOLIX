@@ -14,11 +14,16 @@ var lastSlayer:String = "xd"
 
 var deaths = 0
 
+var completedLevel:int = 0
+var currentLevel:int = 0
 
 var permanent_collected_list: Array = [] 
 
 var temp_collected_list: Array = []
 
+var level_scenes = [
+	"res://scenes/level_2.tscn", "res://scenes/level_3.tscn", "res://level_4.tscn"
+]
 var level_data = {
 	"level1": 0,
 	"level2": 0,

@@ -10,6 +10,7 @@ func _ready() -> void:
 	Global.currentScene = "level2"
 	
 	get_tree().get_first_node_in_group("diamondLabel").wyswietlijDiamenty()
+	get_tree().call_group("diamondLabel", "pokazLevel")
 	
 	
 	

@@ -4,7 +4,7 @@ var entered := false
 var teleporting := false
 @onready var player = get_tree().get_first_node_in_group("Player")
 func _ready() -> void:
-	$ColorRect/Label.text = str(Global.level_data["level2"]) + "/5"
+	$ColorRect/Label.text = str(Global.level_data["level3"]) + "/6"
 func _on_body_entered(body):
 	if body is Player: # Bezpieczniejsze sprawdzenie
 		entered = true
@@ -24,6 +24,6 @@ func _on_enter_timer_timeout():
 	Global.restart_entire_run()
 	Global.target_spawn_name = "MenuStart" 
 	Global.spawn_position = Vector2(295, 405) 
-	GlobalLoader.load_level("res://scenes/level_3.tscn") 
+	GlobalLoader.load_level("res://scenes/level_4.tscn") 
 	Global.restart_entire_run()
 #d

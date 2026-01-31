@@ -13,6 +13,7 @@ border_color = Color(0.18555006, 0.91465515, 0.8594433, 1)
 border_blend = true
 
 [node name="EndScreen" type="CanvasLayer" groups=["endlevel"]]
+layer = 2147483647
 script = ExtResource("1_8gjfw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -63,7 +64,7 @@ DIAMONDS: 4/5
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="nextButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -84,7 +85,7 @@ theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
 text = "NEXT"
 
-[node name="Button2" type="Button" parent="."]
+[node name="LobbyButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -105,7 +106,7 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
 text = "LOBBY"
 
-[node name="Button3" type="Button" parent="."]
+[node name="AgainButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -126,4 +127,6 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_qfurf")
 text = "AGAIN"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="nextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="LobbyButton" to="." method="_on_lobby_button_pressed"]
+[connection signal="pressed" from="AgainButton" to="." method="_on_again_button_pressed"]

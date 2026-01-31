@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bacewamobby6l"]
+[gd_scene load_steps=6 format=3 uid="uid://bacewamobby6l"]
 
 [ext_resource type="Script" uid="uid://bjakevx4hyfo6" path="res://scenes/diamond_label.gd" id="1_mb76k"]
 [ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="1_w0h4o"]
 [ext_resource type="Script" uid="uid://cvtv26fk2yptb" path="res://scenes/death_label.gd" id="3_f8kce"]
+[ext_resource type="Script" uid="uid://38fqq0gdc2tx" path="res://scenes/level_label.gd" id="4_313fh"]
 
 [sub_resource type="GDScript" id="GDScript_w0h4o"]
 
@@ -41,3 +42,24 @@ theme_override_fonts/font = ExtResource("1_w0h4o")
 theme_override_font_sizes/font_size = 30
 text = "00"
 script = ExtResource("3_f8kce")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 101.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+
+[node name="LevelLabel" type="Label" parent="MarginContainer3" groups=["diamondLabel"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_w0h4o")
+theme_override_font_sizes/font_size = 30
+text = "00"
+horizontal_alignment = 1
+script = ExtResource("4_313fh")

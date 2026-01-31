@@ -10,8 +10,10 @@ func _ready() -> void:
 	Global.temporary_diamonds = Global.lobbyScore
 	get_tree().get_first_node_in_group("diamondLabel").wyswietlijDiamenty()
 	get_tree().call_group("diamondLabel", "zniknijSmierci")
+	get_tree().call_group("diamondLabel", "pokazLevel")
 	
-
+func _process(delta: float) -> void:
+	print(Global.currentScene)
 
 
 func _on_player_shoot(pos, facing_right) -> void:
