@@ -71,7 +71,7 @@ func _ready():
 		
 	elif Global.last_checkpoint_pos != Vector2.ZERO: #jak dziala
 		global_position = Global.last_checkpoint_pos
-		Global.last_checkpoint_pos = Vector2.ZERO 
+		#Global.last_checkpoint_pos = Vector2.ZERO 
 		set_player_to_spawn.call_deferred()
 		print("2if")
 		

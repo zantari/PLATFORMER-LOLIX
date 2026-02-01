@@ -37,13 +37,11 @@ func _ready() -> void:
 	
 	
 	if dist < 20: #odradzanie
-		
 		was_activated = true 
 		player.has_gun = true
 		if Global.lastSlayer == "zombie":
 			checkpoint_label.text = ZombieTexts.pick_random()
 		else:
-			
 			checkpoint_label.text = deadTexts.pick_random()
 		show_checkpoint_animation()
 
@@ -67,6 +65,7 @@ func _on_body_entered(body: Node2D) -> void:
 		show_checkpoint_animation()
 
 		was_activated = true 
+
 
 func show_checkpoint_animation() -> void:
 	if not checkpoint_label:

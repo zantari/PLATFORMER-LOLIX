@@ -4,6 +4,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and body.has_method("die"):
 		# 1. Sprawdzamy, czy gracz już nie jest w trakcie umierania
 		if body.isDying: return 
+		Global.lastSlayer = "Lava"
 		
 		# 2. Wywołujemy funkcję die(), która uruchamia glitch i Transition (ciemny ekran)
 		body.die()
