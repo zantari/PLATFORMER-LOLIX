@@ -15,11 +15,15 @@ var sShieldOn: bool
 
 var pom = 1        
 var is_bouncing = false 
-
+var floor_search_timer: float = 0.0
 func _process(delta: float) -> void:
 	update_health()
 	check_death()
 	get_animation()
+	
+	if !$RayCast2D.is_colliding() and wasOnHead and not jumping and not falling and not is_bouncing:
+		position.y += 130* delta
+		
 	
 	
 	if is_bouncing:
