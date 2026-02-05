@@ -23,6 +23,8 @@ func _process(delta: float) -> void:
 	
 	if !$RayCast2D.is_colliding() and wasOnHead and not jumping and not falling and not is_bouncing:
 		position.y += 130* delta
+	if !$RayCast2D.is_colliding() and not wasOnHead and not jumping and not falling and not is_bouncing:
+		position.y -= 130* delta
 		
 	
 	

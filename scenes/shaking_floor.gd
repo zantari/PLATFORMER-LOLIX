@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var shake_power: float = 5.0 
+@export var shake_power: float = 2.0 
 @export var destroy_time: float = 1.5
 @export var respawn_time: float = 5.0 # Czas na powrót
 

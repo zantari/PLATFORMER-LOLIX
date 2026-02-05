@@ -768,12 +768,12 @@ texture = ExtResource("14_tv75f")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ngxfi")
 
-[sub_resource type="Gradient" id="Gradient_kq2c3"]
+[sub_resource type="Gradient" id="Gradient_3buw8"]
 offsets = PackedFloat32Array(0.24725275, 0.63736266)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dffsc"]
-gradient = SubResource("Gradient_kq2c3")
+gradient = SubResource("Gradient_3buw8")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -1048,6 +1048,7 @@ metadata/_edit_lock_ = true
 
 [node name="checkpoint2" parent="CheckPoints" instance=ExtResource("26_8ky4j")]
 position = Vector2(1818, 450)
+metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 

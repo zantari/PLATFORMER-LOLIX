@@ -1,12 +1,15 @@
 extends AnimatableBody2D
 
-func _process(delta: float) -> void:
-	print(position)
+var _is_activated: bool = false # Nasz strażnik
+
+
 
 func _on_activator_body_entered(body: Node2D) -> void:
-	print("test")
-	if body is Player:
+
+	if body is Player and not _is_activated:
 		print("aktywuje sie")
+		_is_activated = true
+		
 		if $AnimationPlayer:
 			$AnimationPlayer.play("position")
 		else:
