@@ -158,7 +158,7 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 		
 		if player_node.has_method("get_damage"):
-			player_node.get_damage(10)
+			player_node.get_damage(20)
 
 func animate_vignette(vignette: ColorRect):
 	var mat = vignette.material

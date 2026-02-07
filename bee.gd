@@ -13,7 +13,7 @@ var vignette_tween: Tween
 var isInPlayer = false
 @export var marker1: Marker2D
 @export var marker2: Marker2D
-var dmg_power = 0.1
+var dmg_power = 3
 var chromatic_tween: Tween
 var forward := true
 @onready var player = get_tree().get_first_node_in_group('Player')

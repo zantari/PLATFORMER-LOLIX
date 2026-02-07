@@ -7,7 +7,7 @@ var direction_x := 1
 var speed := 60
 var vignette_tween: Tween
 
-@export var DAMAGE: int = 30
+@export var DAMAGE: int = 40
 
 
 func get_dmg(dmg, area):
