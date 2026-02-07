@@ -31,6 +31,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.30980393, 1, 0.29803923, 1)
 theme_override_fonts/font = ExtResource("2_ywqth")
 theme_override_font_sizes/font_size = 40
-text = "CHECKPOINT!"
+text = "CHECKPOINT"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
