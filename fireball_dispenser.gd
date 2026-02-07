@@ -3,7 +3,11 @@ extends Area2D
 const fireball_scene: PackedScene = preload("res://scenes/fire_ball_dol.tscn")
 @onready var timer = $ShootTImer 
 @export var kierunek: int = 1 # 1 = dół, -1 = góra
+@export var czyWidoczne: bool = true
 
+func _ready() -> void:
+	if !czyWidoczne:
+		$Sprite2D.visible = false
 func _on_shoot_timer_timeout() -> void:
 	
 	if not fireball_scene:

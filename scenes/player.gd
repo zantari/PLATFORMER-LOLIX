@@ -64,6 +64,12 @@ func _ready():
 		$AnimatedSprite2D.material.set_shader_parameter("amount", 0.0)
 	 
 	if Global.target_spawn_name == 'MenuStart': #jak nie dziala
+		var target_spawn_name: String = "DefaultSpawn"
+		Global.target_spawn_name = target_spawn_name
+		var kordyLobby: Vector2 = Vector2(317, 286)
+	
+	# Zmiana sceny
+		Global.last_checkpoint_pos = kordyLobby
 		Global.last_checkpoint_pos = Vector2.ZERO 
 		set_player_to_spawn.call_deferred()
 		

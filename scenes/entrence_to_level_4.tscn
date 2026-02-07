@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://nvi3g2fjqsi"]
+[gd_scene load_steps=4 format=3 uid="uid://6hj18wp1c08"]
 
-[ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="1_ji71g"]
-[ext_resource type="Script" uid="uid://bo7qytuknjjkj" path="res://scenes/entrence_to_level_3.gd" id="1_uh0bd"]
+[ext_resource type="Script" uid="uid://bjax2yt3l2av3" path="res://scenes/entrence_to_level_4.gd" id="1_hajtl"]
+[ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="1_wgmab"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uh0bd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hajtl"]
 size = Vector2(56, 71)
 
-[node name="entrence_to_level_3" type="Area2D"]
-script = ExtResource("1_uh0bd")
+[node name="entrence_to_level_4" type="Area2D"]
+script = ExtResource("1_hajtl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uh0bd")
+shape = SubResource("RectangleShape2D_hajtl")
 
 [node name="EnterTimer" type="Timer" parent="."]
 
@@ -26,8 +26,8 @@ layout_mode = 0
 offset_top = 6.0
 offset_right = 104.0
 offset_bottom = 33.0
-theme_override_colors/font_color = Color(0.8605892, 0.9486268, 2.3102762e-06, 1)
-theme_override_fonts/font = ExtResource("1_ji71g")
+theme_override_colors/font_color = Color(0.85882354, 0.11372549, 0, 1)
+theme_override_fonts/font = ExtResource("1_wgmab")
 theme_override_font_sizes/font_size = 26
 text = "0/25"
 horizontal_alignment = 1

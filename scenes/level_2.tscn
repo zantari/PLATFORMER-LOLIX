@@ -999,7 +999,7 @@ tile_set = SubResource("TileSet_etecx")
 collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("1_pbc48")]
-position = Vector2(2422, 730)
+position = Vector2(302, 432)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(4, 5)
@@ -1030,7 +1030,7 @@ position = Vector2(2650, 987)
 [node name="Portals" type="Node2D" parent="."]
 
 [node name="PortalExit1" parent="Portals" groups=["Player"] instance=ExtResource("23_m6wqs")]
-position = Vector2(350, 438)
+position = Vector2(299, 439)
 collision_mask = 3
 
 [node name="ExitFromLvl1" parent="Portals" instance=ExtResource("24_vfjea")]

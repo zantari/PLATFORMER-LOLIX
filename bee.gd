@@ -29,6 +29,8 @@ func _ready():
 	print("test")
 	$AnimatedSprite2D/HealthBar.visible = false
 	
+	znikanieEfektu()
+	
 	if marker1:
 		position = marker1.position
 	else:
@@ -222,10 +224,9 @@ func umieranieDucha():
 	speed = 0 
 	
 	var tween = create_tween()
-	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, 1.5) # Powolne znikanie
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, 1.5) 
 	
-	await get_tree().create_timer(4.0).timeout
-	queue_free()
+	tween.finished.connect(queue_free)
 	
 	
 func znikanieEfektu():

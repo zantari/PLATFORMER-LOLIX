@@ -1,6 +1,6 @@
 
 extends Area2D
-
+@export var kordyLobby:Vector2 = Vector2(317, 286)
 var entered := false
 var teleporting := false
 var pomocniczazmiennadokurwateleportacjizlobbydolevela:int = 0
@@ -34,8 +34,13 @@ func _process(_delta):
 			$EnterTimer.start()
 
 func _on_enter_timer_timeout():
-	Global.spawn_position = pozycjagraczalobby
-	Global.last_checkpoint_pos = pozycjagraczalobby
+	var target_spawn_name: String = "DefaultSpawn"
+	Global.target_spawn_name = target_spawn_name
+	
+	# Ziana sceny
+	Global.last_checkpoint_pos = kordyLobby
+	Global.last_checkpoint_pos = Vector2.ZERO 
+	
 	get_tree().change_scene_to_file("res://scenes/level.tscn")
 
 

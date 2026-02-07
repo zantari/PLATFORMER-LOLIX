@@ -12,8 +12,7 @@ func _ready() -> void:
 	get_tree().call_group("diamondLabel", "zniknijSmierci")
 	get_tree().call_group("diamondLabel", "pokazLevel")
 	
-func _process(delta: float) -> void:
-	print(Global.currentScene)
+
 
 
 func _on_player_shoot(pos, facing_right) -> void:

@@ -22,18 +22,20 @@ var permanent_collected_list: Array = []
 var temp_collected_list: Array = []
 
 var level_scenes = [
-	"res://scenes/level_2.tscn", "res://scenes/level_3.tscn", "res://level_4.tscn"
+	"res://scenes/level_2.tscn", "res://scenes/level_3.tscn", "res://level_4.tscn", "res://scenes/level_5.tscn"
 ]
 var level_data = {
 	"level1": 0,
 	"level2": 0,
-	"level3":0
+	"level3":0,
+	"level4": 0
 }
 
 var level_deaths = {
 	"level1": 0,
-	"level2": 1,
-	"level3": 0
+	"level2": 0,
+	"level3": 0,
+	"level4": 0
 }
 
 
@@ -43,6 +45,11 @@ var uzbieraneDiamenty = 0
 var naIleDiamentow = 0
 signal diamonds_updated(new_amount)
 
+
+
+
+	
+	
 func add_diamond(diamond_path: String):
 	temporary_diamonds += 1
 	

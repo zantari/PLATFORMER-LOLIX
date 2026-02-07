@@ -10,6 +10,7 @@ var facing_right := true
 @onready var marker = $Marker2D
 @onready var sprite = $AnimatedSprite2D
 const fireball_scene: PackedScene = preload("res://scenes/fire_ball.tscn")
+@export var blood_color: Color = Color.DARK_RED
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -77,13 +78,19 @@ func shoot():
 
 
 func _on_area_entered(area: Area2D) -> void:
-	health -= 1
-	area.queue_free()
+	if area.is_in_group("pocisk"):
+		get_dmg(1, area)
+		area.queue_free()
+	
+func get_dmg(dmg, area):
+	if area.is_in_group("pocisk"):
+		if dmg == 3:
+			area.shake_amount = 0.3
+		health -= dmg
+		
 	var tween = create_tween() 
-	# Naprawiłem tweena - teraz poprawnie mignie od 1.0 do 0.0
 	tween.tween_property($AnimatedSprite2D, "material:shader_parameter/amount", 1.0, 0.1)
 	tween.tween_property($AnimatedSprite2D, "material:shader_parameter/amount", 0.0, 0.1)
-
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "shoot":
