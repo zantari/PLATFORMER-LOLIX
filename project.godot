@@ -23,7 +23,10 @@ GlobalLoader="*res://scenyGlobalne/GlobalLoader.gd"
 
 [display]
 
-window/stretch/aspect="expand"
+window/size/viewport_width=2500
+window/size/viewport_height=1000
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 
 [input]
 

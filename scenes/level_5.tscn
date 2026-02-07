@@ -1275,7 +1275,7 @@ position = Vector2(2553, 288)
 position = Vector2(2159, 444)
 
 [node name="Marker2D2" type="Marker2D" parent="BeePathPoints"]
-position = Vector2(2422, 735)
+position = Vector2(2346, 692)
 
 [node name="Marker2D3" type="Marker2D" parent="BeePathPoints"]
 position = Vector2(3212, 742)

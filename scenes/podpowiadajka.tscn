@@ -8,9 +8,8 @@
 size = Vector2(32, 46)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvfee"]
-bg_color = Color(0.56060654, 0.6096902, 0.63353884, 1)
+bg_color = Color(0.56078434, 0.60784316, 0.63529414, 0.4862745)
 border_color = Color(0.56144136, 0.8674538, 0.83455896, 1)
-shadow_size = 8
 anti_aliasing_size = 1.617
 
 [node name="Podpowiadajka" type="Area2D"]
@@ -61,6 +60,7 @@ grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.9005368, 0.88144034, 0.74035555, 0.5019608)
 theme_override_fonts/font = ExtResource("1_hn6hd")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_rvfee")
