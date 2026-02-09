@@ -1,5 +1,5 @@
 extends Area2D
-var max_health:int = 5
+var max_health:int = 7
 var health := max_health
 var speed := 30
 var direction_x := 1
@@ -96,7 +96,12 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "shoot":
 		is_shooting = false
 		
+func _on_head_shot_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("pocisk"):
+		get_dmg(5, area)
 		
+		area.queue_free()
+	
 
 func update_health():
 	var healthbar = $HealthBar
