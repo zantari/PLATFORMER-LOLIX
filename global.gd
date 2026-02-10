@@ -20,7 +20,7 @@ var currentLevel:int = 0
 var permanent_collected_list: Array = [] 
 
 var temp_collected_list: Array = []
-
+const SAVE_PATH = "user://save_data.cfg"
 var level_scenes = [
 	"res://scenes/level_2.tscn", "res://scenes/level_3.tscn", "res://level_4.tscn", "res://scenes/level_5.tscn"
 ]
@@ -111,15 +111,18 @@ func returnLobby(nazwaLVL, _target_scene_path = ""):
 
 	if level_data.has(nazwaLVL) and level_data[nazwaLVL] < current_run_total:
 		level_data[nazwaLVL] = current_run_total 
+	
 		
 	   
 		lobbyScore = 0
 		for diament in level_data.values():
 			lobbyScore += diament
+	
 	else:
 		lobbyScore = 0
 		for diament in level_data.values():
 			lobbyScore += diament
+	save_game()
 			
 	print("Powrót do lobby, wynik runa: ", current_run_total, "ukonczony poziom ", passedLevel)
 	uzbieraneDiamenty = current_run_total
@@ -132,5 +135,36 @@ func returnLobby(nazwaLVL, _target_scene_path = ""):
 	if _target_scene_path != "":
 		get_tree().change_scene_to_file("res://scenes/EndScreen.tscn")
 		
-		
+	
+	
+func _ready():
+	load_game() 
+
+func save_game():
+	var config = ConfigFile.new()
+	
+	config.set_value("Progress", "level_data", level_data)
+	config.set_value("Progress", "level_deaths", level_deaths)
+	config.set_value("Progress", "currentLevel", currentLevel)
+	
+	var err = config.save(SAVE_PATH)
+	if err != OK:
+		print("Cos nie tak: ", err)
+	else:
+		print("Gra zapisana w pamięci przeglądarki.")
+
+func load_game():
+	var config = ConfigFile.new()
+	var err = config.load(SAVE_PATH)
+	
+
+	if err != OK:
+		print("Brak zapisu.")
+		return
+
+
+	level_data = config.get_value("Progress", "level_data", level_data)
+	level_deaths = config.get_value("Progress", "level_deaths", level_deaths)
+	currentLevel = config.get_value("Progress", "currentLevel", 0)
+	print("Dane wczytane pomyślnie.")
 	

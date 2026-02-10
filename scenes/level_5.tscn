@@ -1250,10 +1250,6 @@ rotation = 3.1415927
 position = Vector2(3232, 619)
 rotation = 3.1415927
 
-[node name="Spider3" parent="Enemies" instance=ExtResource("28_rwci2")]
-position = Vector2(2536, 619)
-rotation = 3.1415927
-
 [node name="BlackNinja" parent="Enemies" instance=ExtResource("30_g5cqv")]
 position = Vector2(2837, 752)
 
