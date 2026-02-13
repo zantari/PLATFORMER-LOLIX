@@ -1113,7 +1113,15 @@ one_shot = true
 
 [node name="lavaDamage" parent="lavaKill" instance=ExtResource("21_jdrep")]
 position = Vector2(634, 508)
-metadata/_edit_lock_ = true
+
+[node name="lavaDamage4" parent="lavaKill" instance=ExtResource("21_jdrep")]
+position = Vector2(-330, 509)
+
+[node name="lavaDamage5" parent="lavaKill" instance=ExtResource("21_jdrep")]
+position = Vector2(-343, 443)
+
+[node name="lavaDamage6" parent="lavaKill" instance=ExtResource("21_jdrep")]
+position = Vector2(-351, 379)
 
 [node name="lavaDamage2" parent="lavaKill" instance=ExtResource("21_jdrep")]
 position = Vector2(2650, 987)

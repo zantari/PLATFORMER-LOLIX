@@ -5,7 +5,7 @@ const bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 
 func _ready() -> void:
 	get_tree().get_first_node_in_group("Player").can_use_shield = true
-	get_tree().get_first_node_in_group("diamondLabel").maxDiamenty = 6
+	get_tree().get_first_node_in_group("diamondLabel").maxDiamenty = 5
 	Global.temporary_diamonds = 0 
 	Global.currentScene = "level3"
 	

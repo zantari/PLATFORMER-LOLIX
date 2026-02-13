@@ -1944,13 +1944,10 @@ metadata/_edit_lock_ = true
 position = Vector2(994, 437)
 
 [node name="diamond2" parent="Diamonds" instance=ExtResource("33_umwtk")]
-position = Vector2(1390, 713)
-
-[node name="diamond3" parent="Diamonds" instance=ExtResource("33_umwtk")]
-position = Vector2(2086, 688)
+position = Vector2(1943, 709)
 
 [node name="diamond4" parent="Diamonds" instance=ExtResource("33_umwtk")]
-position = Vector2(2971, 731)
+position = Vector2(2970, 707)
 
 [node name="diamond5" parent="Diamonds" instance=ExtResource("33_umwtk")]
 position = Vector2(3330, 779)
