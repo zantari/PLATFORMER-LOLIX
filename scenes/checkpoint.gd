@@ -4,12 +4,11 @@ extends Area2D
 @export var is_starting_checkpoint: bool = false 
 @onready var player = get_tree().get_first_node_in_group("Player")
 var was_activated: bool = false 
-
+var ui_tween: Tween
 var ZombieTexts: Array[String] = [
 	"Aim for the head!",
 	"They like brains",
 	"Try press Q",
-	"Can you use your shield?",
 	"You can shoot by LMB or E",
 	"Nice try",
 	"Zombies are the best",
@@ -20,14 +19,12 @@ var deadTexts: Array[String] = [
 	"Not your day?",
 	"Is that all?",
 	"That was close",
-	"Not even close",
 	"Nice try",
-	"try to jump",
 	"AVOID LAVA!!",
-	"LMB/E - SHOOT, Q - SHIELD, WSAD - MOVEMENT, use that info"
 	
 ]
 func _ready() -> void:
+	Global.clear_ui.connect(_on_clear_ui)
 	if checkpoint_label:
 		checkpoint_label.modulate.a = 0
 		checkpoint_label.visible = false
@@ -49,6 +46,17 @@ func _ready() -> void:
 	elif is_starting_checkpoint:
 		was_activated = true 
 
+func _on_clear_ui(caller):
+	if caller == self: 
+		return
+		
+	if ui_tween: 
+		ui_tween.kill()
+		
+	if checkpoint_label:
+		checkpoint_label.visible = false
+		checkpoint_label.modulate.a = 0
+		
 func _on_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("Player") and not was_activated:
@@ -70,16 +78,21 @@ func _on_body_entered(body: Node2D) -> void:
 func show_checkpoint_animation() -> void:
 	if not checkpoint_label:
 		return
-	
+		
+	# Zamykamy resztę syfu na ekranie
+	Global.clear_ui.emit(self)
 	
 	checkpoint_label.visible = true
 	checkpoint_label.modulate.a = 0
 	
-	var tween = create_tween()
+	# Zmieniona inicjalizacja tweena, żeby korzystał ze zmiennej na górze
+	if ui_tween: ui_tween.kill()
+	ui_tween = create_tween()
+	
 	# Pojawianie się (0.4s)
-	tween.tween_property(checkpoint_label, "modulate:a", 1.0, 0.4)
+	ui_tween.tween_property(checkpoint_label, "modulate:a", 1.0, 0.4)
 	# Czekanie (1.5s)
-	tween.tween_interval(1.5)
+	ui_tween.tween_interval(1.5)
 	# Znikanie (0.6s)
-	tween.tween_property(checkpoint_label, "modulate:a", 0.0, 0.6)
-	tween.tween_callback(func(): checkpoint_label.visible = false)
+	ui_tween.tween_property(checkpoint_label, "modulate:a", 0.0, 0.6)
+	ui_tween.tween_callback(func(): checkpoint_label.visible = false)

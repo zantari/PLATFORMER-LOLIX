@@ -6,8 +6,9 @@ var teleporting := false
 func _ready() -> void:
 	$ColorRect/Label.text = str(Global.level_data["level4"]) + "/5"
 func _on_body_entered(body):
-	if body is Player: # Bezpieczniejsze sprawdzenie
-		entered = true
+	if Global.currentLevel+1 > 3:
+		if body is Player: # Bezpieczniejsze sprawdzenie
+			entered = true
 
 func _on_body_exited(_body):
 	entered = false

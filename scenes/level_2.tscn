@@ -1048,6 +1048,7 @@ metadata/_edit_lock_ = true
 
 [node name="checkpoint2" parent="CheckPoints" instance=ExtResource("26_8ky4j")]
 position = Vector2(1818, 450)
+is_starting_checkpoint = null
 metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]

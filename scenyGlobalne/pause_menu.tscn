@@ -129,13 +129,6 @@ theme_override_fonts/font = ExtResource("3_12s6w")
 theme_override_font_sizes/font_size = 50
 text = "RESUME"
 
-[node name="SETTINGS" type="Button" parent="PanelContainer/kontenerMENU"]
-layout_mode = 2
-focus_mode = 0
-theme_override_fonts/font = ExtResource("3_12s6w")
-theme_override_font_sizes/font_size = 50
-text = "SETTINGS"
-
 [node name="RESET" type="Button" parent="PanelContainer/kontenerMENU"]
 layout_mode = 2
 focus_mode = 0
@@ -150,6 +143,13 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("3_12s6w")
 theme_override_font_sizes/font_size = 50
 text = "LOBBY"
+
+[node name="SETTINGS" type="Button" parent="PanelContainer/kontenerMENU"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_12s6w")
+theme_override_font_sizes/font_size = 50
+text = "RESET"
 
 [node name="QUIT" type="Button" parent="PanelContainer/kontenerMENU"]
 process_mode = 3
@@ -172,6 +172,8 @@ theme_override_colors/font_color = Color(1, 0, 0.31764707, 1)
 theme_override_fonts/font = ExtResource("3_12s6w")
 theme_override_font_sizes/font_size = 67
 text = "ARE YOU SURE?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="YES" type="Button" parent="PanelContainer/kontenerAREUSURE"]
 layout_mode = 2
@@ -193,9 +195,9 @@ libraries = {
 }
 
 [connection signal="pressed" from="PanelContainer/kontenerMENU/RESUME" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/kontenerMENU/SETTINGS" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/kontenerMENU/RESET" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="PanelContainer/kontenerMENU/LOBBY" to="." method="_on_lobby_pressed"]
+[connection signal="pressed" from="PanelContainer/kontenerMENU/SETTINGS" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PanelContainer/kontenerMENU/QUIT" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PanelContainer/kontenerAREUSURE/YES" to="." method="_on_yes_pressed"]
 [connection signal="pressed" from="PanelContainer/kontenerAREUSURE/NO" to="." method="_on_no_pressed"]

@@ -10,7 +10,9 @@ var ui_tween: Tween
 @export var tresc:String = "WSAD/ARROWS: MOVEMENT\nE/LMB: SHOOT\nQ: SHIELD"
 
 func _ready():
-
+	# Podpinamy sygnał
+	Global.clear_ui.connect(_on_clear_ui)
+	
 	label.visible = false
 	rect.visible = false
 	btn.visible = false
@@ -18,10 +20,23 @@ func _ready():
 	rect.modulate.a = 0
 	btn.modulate.a = 0
 	
-
 	var float_tween = create_tween().set_loops()
 	float_tween.tween_property(sprite, "position:y", sprite.position.y - 10, 1.2).set_trans(Tween.TRANS_SINE)
 	float_tween.tween_property(sprite, "position:y", sprite.position.y, 1.2).set_trans(Tween.TRANS_SINE)
+
+func _on_clear_ui(caller):
+	if caller == self: 
+		return # Nie chowaj się, jeśli to ty wywołałeś sygnał
+		
+	if ui_tween: 
+		ui_tween.kill() # Zabijamy aktualną animację
+		
+	label.visible = false
+	rect.visible = false
+	btn.visible = false
+	label.modulate.a = 0
+	rect.modulate.a = 0
+	btn.modulate.a = 0
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
@@ -32,7 +47,7 @@ func _on_body_entered(body: Node2D):
 		start_sequence()
 
 func start_sequence():
-	
+	Global.clear_ui.emit(self)
 	if ui_tween: ui_tween.kill()
 	
 

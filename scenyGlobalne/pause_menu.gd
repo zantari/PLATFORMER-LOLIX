@@ -30,7 +30,8 @@ func _on_resume_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	resume()
+	cr="resetGame"
+	areusureShow()
 
 
 func _on_reset_pressed() -> void:
@@ -54,6 +55,7 @@ func _on_quit_pressed() -> void:
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	$AnimationPlayer.play("RESET")
+	$PanelContainer/kontenerAREUSURE/Label.text = "ARE YOU SURE?"
 	$PanelContainer/kontenerMENU.visible = true
 	$PanelContainer/kontenerAREUSURE.visible = false
 	
@@ -76,7 +78,10 @@ func _on_yes_pressed() -> void:
 		Global.target_spawn_name = 'MenuStart'
 		Global.restart_entire_run()
 		cr = "nic"
-		
+	elif cr == "resetGame":
+		resume() 
+		Global.reset_game()
+		cr = "nic"
 	
 
 
@@ -85,6 +90,11 @@ func _on_no_pressed() -> void:
 
 
 func areusureShow():
+	if cr == "resetGame":
+		$PanelContainer/kontenerAREUSURE/Label.text = "THIS WILL RESET THE WHOLE GAME\nARE YOU SURE?"
+	else:
+		$PanelContainer/kontenerAREUSURE/Label.text = "ARE YOU SURE?"
+		
 	$PanelContainer/kontenerMENU.visible = false
 	$PanelContainer/kontenerAREUSURE.visible = true
 

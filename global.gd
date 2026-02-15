@@ -1,5 +1,5 @@
 extends Node
-
+signal clear_ui(caller)
 # Zmienne nawigacyjne
 var spawn_position: Vector2 = Vector2.ZERO
 var target_spawn_name: String = ""
@@ -138,7 +138,30 @@ func returnLobby(nazwaLVL, _target_scene_path = ""):
 	
 	
 func _ready():
+	
 	load_game() 
+
+
+func reset_game():
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+		print("Plik zapisu zniszczony.")
+	
+
+	level_data = { "level1": 0, "level2": 0, "level3": 0, "level4": 0 }
+	level_deaths = { "level1": 0, "level2": 0, "level3": 0, "level4": 0 }
+	currentLevel = 0
+	permanent_diamonds = 0
+	temporary_diamonds = 0
+	deaths = 0
+	permanent_collected_list.clear()
+	temp_collected_list.clear()
+	
+
+	save_game() 
+
+
+	get_tree().change_scene_to_file("res://scenes/boot.tscn")
 
 func save_game():
 	var config = ConfigFile.new()
