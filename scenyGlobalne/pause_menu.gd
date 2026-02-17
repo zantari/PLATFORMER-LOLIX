@@ -1,6 +1,7 @@
 extends Control
 var cr = "nic"
 func resume():
+	
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	self.hide()
@@ -77,6 +78,7 @@ func _on_yes_pressed() -> void:
 		resume()
 		Global.target_spawn_name = 'MenuStart'
 		Global.restart_entire_run()
+		
 		cr = "nic"
 	elif cr == "resetGame":
 		resume() 

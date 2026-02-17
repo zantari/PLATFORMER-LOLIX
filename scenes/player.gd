@@ -51,7 +51,7 @@ func isShieldOnFunc():
 	
 func _ready():
 	
-	
+
 	
 	
 	
@@ -281,6 +281,7 @@ func get_damage(amount):
 
 		
 func die():
+	
 	$ShieldArea/AnimatedSprite2D.visible = false
 	if isDying: return
 	isDying = true
