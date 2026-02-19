@@ -77,7 +77,7 @@ func _on_yes_pressed() -> void:
 	elif cr == "reset":
 		resume()
 		Global.target_spawn_name = 'MenuStart'
-		Global.restart_entire_run()
+		Global.restart_entire_run_z_lobby()
 		
 		cr = "nic"
 	elif cr == "resetGame":

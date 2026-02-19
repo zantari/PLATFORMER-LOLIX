@@ -93,7 +93,12 @@ func restart_entire_run():
 	
 	diamonds_updated.emit(0)
 	
+	
+	get_tree().reload_current_scene()
+	
+func restart_entire_run_z_lobby():
 	GlobalLoader.load_level(get_tree().current_scene.scene_file_path)
+	
 
 func returnLobby(nazwaLVL, _target_scene_path = ""):
 
