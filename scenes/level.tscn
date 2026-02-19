@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://bsekiujt56atn"]
+[gd_scene load_steps=71 format=4 uid="uid://bsekiujt56atn"]
 
 [ext_resource type="Script" uid="uid://fynhtgm8ug70" path="res://scenes/level.gd" id="1_7agi7"]
 [ext_resource type="Texture2D" uid="uid://bu4rb6g5pav70" path="res://graphic/New Piskel (1)22.png" id="1_w7c3h"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://c85nsd8s2dlhj" path="res://scenyGlobalne/pause_menu.tscn" id="27_cmcjb"]
 [ext_resource type="PackedScene" uid="uid://cu66a1jei48p8" path="res://scenes/undermapteleport.tscn" id="28_7agi7"]
 [ext_resource type="PackedScene" uid="uid://bacewamobby6l" path="res://scenes/diamond_counter.tscn" id="28_556r4"]
+[ext_resource type="PackedScene" uid="uid://nxqfbkgg4th6" path="res://scenes/podpowiadajka.tscn" id="33_gur6y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu01b"]
 texture = ExtResource("7_gunhw")
@@ -1316,6 +1317,16 @@ position = Vector2(1009, -438)
 collision_layer = 32
 collision_mask = 2
 spawn_point = NodePath("../MenuSpawnPoint")
+
+[node name="Podpowiadajka2" parent="." instance=ExtResource("33_gur6y")]
+position = Vector2(767.06915, 271.80505)
+collision_mask = 2
+tresc = "CLICK ESC OR TAB TO OPEN THE MENU"
+
+[node name="Podpowiadajka3" parent="." instance=ExtResource("33_gur6y")]
+position = Vector2(1104.0691, 271.71942)
+collision_mask = 2
+tresc = "CLICK ESC OR TAB TO OPEN THE MENU"
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PlayerTimer" to="Player" method="_on_player_timer_timeout"]

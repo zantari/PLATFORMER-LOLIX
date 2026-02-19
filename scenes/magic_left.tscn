@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://j8jfegfxs5og"]
+[gd_scene load_steps=16 format=3 uid="uid://j8jfegfxs5og"]
 
 [ext_resource type="Script" uid="uid://7akmfckqgdxp" path="res://scenes/magic_left.gd" id="1_1gn6w"]
 [ext_resource type="PackedScene" uid="uid://d10bys4suitjp" path="res://scenes/fire_ball_left.tscn" id="2_efc3k"]
 [ext_resource type="Shader" uid="uid://de8kwq1p65hls" path="res://scenes/flicker.gdshader" id="3_afufh"]
 [ext_resource type="Texture2D" uid="uid://bv0rnl51q85am" path="res://graphic/magician/magician.png" id="4_sfyni"]
 [ext_resource type="Texture2D" uid="uid://bk4pwros5hie4" path="res://graphic/magician/magician_shoot2.png" id="5_kebi8"]
+[ext_resource type="Script" uid="uid://bqpwhpsfmupy8" path="res://scenes/head_shot_area.gd" id="6_kebi8"]
 [ext_resource type="Texture2D" uid="uid://b6b60v8flha5c" path="res://graphic/progressBars/progrsbarBack.png" id="6_sfyni"]
 [ext_resource type="Texture2D" uid="uid://d135ykr88vulo" path="res://graphic/progressBars/progresbarFrame.png" id="7_kebi8"]
 [ext_resource type="Texture2D" uid="uid://dupe1d8mww0nt" path="res://graphic/progressBars/progresbar4.png" id="8_k0e26"]
@@ -12,8 +13,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwhys"]
 resource_local_to_scene = true
 shader = ExtResource("3_afufh")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/whiteness_color = Color(1, 1, 1, 1)
 shader_parameter/amount = 0.0
+shader_parameter/glitch_chance = 0.0
+shader_parameter/explosion_speed = 2.0
+shader_parameter/particle_size = 30.0
+shader_parameter/glitch_speed = 7.0
+shader_parameter/shake_strength = 0.02
+shader_parameter/noise_strength = 0.2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_788o1"]
 animations = [{
@@ -42,6 +49,9 @@ size = Vector2(4, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87hvv"]
 size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0e26"]
+size = Vector2(35, 20)
 
 [node name="magicLeft" type="Area2D"]
 collision_layer = 4
@@ -77,6 +87,16 @@ shape = SubResource("RectangleShape2D_fggut")
 position = Vector2(-18, 32)
 shape = SubResource("RectangleShape2D_87hvv")
 
+[node name="HeadShotArea" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("6_kebi8")
+blood_color = Color(0.94907826, 0, 0.19865394, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadShotArea"]
+position = Vector2(1.5, -4)
+shape = SubResource("RectangleShape2D_k0e26")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
@@ -99,4 +119,5 @@ texture_progress = ExtResource("8_k0e26")
 [connection signal="body_entered" from="walneicie" to="." method="_on_walneicie_body_entered"]
 [connection signal="body_exited" from="RightCliff" to="." method="_on_right_cliff_body_exited"]
 [connection signal="body_exited" from="LeftCliff" to="." method="_on_left_cliff_body_exited"]
+[connection signal="area_entered" from="HeadShotArea" to="." method="_on_head_shot_area_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

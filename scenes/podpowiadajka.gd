@@ -24,6 +24,11 @@ func _ready():
 	float_tween.tween_property(sprite, "position:y", sprite.position.y - 10, 1.2).set_trans(Tween.TRANS_SINE)
 	float_tween.tween_property(sprite, "position:y", sprite.position.y, 1.2).set_trans(Tween.TRANS_SINE)
 
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("esc"):
+		#get_tree().call_group("pauseMenu", "resume")
+		#close_sequence()
+
 func _on_clear_ui(caller):
 	if caller == self: 
 		return # Nie chowaj się, jeśli to ty wywołałeś sygnał

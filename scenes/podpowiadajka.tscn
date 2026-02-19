@@ -20,7 +20,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_vwjju")
 
 [node name="CheckpointUI" type="CanvasLayer" parent="."]
-layer = 10
+layer = 67676767
 
 [node name="CheckpointLabel" type="Label" parent="CheckpointUI"]
 anchors_preset = 8

@@ -5,7 +5,7 @@ var teleporting := false
 @onready var player = get_tree().get_first_node_in_group("Player")
 func _ready() -> void:
 	$ColorRect/Label.text = str(Global.level_data["level4"]) + "/5"
-	if Global.currentLevel+1 > 2:
+	if Global.currentLevel+1 > 3:
 		$Frames.visible = true
 	else:
 		$Frames.visible = false

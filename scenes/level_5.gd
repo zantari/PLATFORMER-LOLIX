@@ -24,3 +24,7 @@ func _on_player_shoot(pos, facing_right) -> void:
 	bullet.direction = direction
 	$Bullets.add_child(bullet)
 	bullet.position = pos + Vector2(14 * direction, 5)
+
+
+func _on_naprawiaczbuguw_body_entered(body: Node2D) -> void:
+	Global.restart_entire_run()
