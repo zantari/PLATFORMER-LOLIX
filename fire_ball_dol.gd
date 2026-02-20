@@ -33,7 +33,7 @@ func animate_vignette(vignette: ColorRect):
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if body.has_method("get_damage"):
-			body.get_damage(50)
+			body.get_damage(100)
 		queue_free()
 	else:
 		queue_free()
