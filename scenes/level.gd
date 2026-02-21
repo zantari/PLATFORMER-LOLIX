@@ -11,6 +11,7 @@ func _ready() -> void:
 	get_tree().get_first_node_in_group("diamondLabel").wyswietlijDiamenty()
 	get_tree().call_group("diamondLabel", "zniknijSmierci")
 	get_tree().call_group("diamondLabel", "pokazLevel")
+	get_tree().call_group("Player", "mechanikaStrzalki")
 	
 
 

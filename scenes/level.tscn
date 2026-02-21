@@ -1321,12 +1321,17 @@ spawn_point = NodePath("../MenuSpawnPoint")
 [node name="Podpowiadajka2" parent="." instance=ExtResource("33_gur6y")]
 position = Vector2(767.06915, 271.80505)
 collision_mask = 2
-tresc = "CLICK ESC OR TAB TO OPEN THE MENU"
+tresc = "CLICK E TO ENTER THE LEVEL"
 
 [node name="Podpowiadajka3" parent="." instance=ExtResource("33_gur6y")]
 position = Vector2(1104.0691, 271.71942)
 collision_mask = 2
-tresc = "CLICK ESC OR TAB TO OPEN THE MENU"
+tresc = "CLICK ESC OR TAB TO OPEN THE MENU "
+
+[node name="Podpowiadajka4" parent="." instance=ExtResource("33_gur6y")]
+position = Vector2(1867.073, 286.5255)
+collision_mask = 2
+tresc = "If you want more levels, let us know in the comment"
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PlayerTimer" to="Player" method="_on_player_timer_timeout"]

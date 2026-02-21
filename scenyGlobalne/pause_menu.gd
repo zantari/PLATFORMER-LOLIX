@@ -17,7 +17,7 @@ func pause():
 func testEsc():
 	if Input.is_action_just_pressed("esc") and get_tree().paused == false:
 		Global.clear_ui.emit(self)
-		$PanelContainer/kontenerMENU.visible = true
+		$PanelContainer/kontenerMENU.visible = true		
 		$PanelContainer/kontenerAREUSURE.visible = false
 		print("odpalonmo setingsy")
 		pause()

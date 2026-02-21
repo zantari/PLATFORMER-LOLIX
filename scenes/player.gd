@@ -27,6 +27,13 @@ var can_regenerate := false
 var isDying = false
 var can_animate = true
 
+@onready var strzalka = $Strzalka
+@onready var pokazStrzakeTimer = $pokazStrzakeTimer
+var portal1pos = Vector2(310, 290)
+var portal2pos = Vector2(616.0, 290.0)
+var portal3pos = Vector2(1256.0, 290.0)
+var portal4pos = Vector2(1562.0, 290.0)
+
 
 var spider
 var duch
@@ -51,7 +58,7 @@ func isShieldOnFunc():
 	
 func _ready():
 	
-
+	
 	
 	
 	
@@ -129,11 +136,48 @@ const JUMP_FORCE = -600.0        #
 
 
 const GRAVITY_RISING = 400.0     
-const GRAVITY_FALLING = 1000.0   # Ciężka grawitacja (jak spadasz lub puściłeś spację)
+const GRAVITY_FALLING = 1000.0  
 const SPEED_WALK = 160.0        
 const SPEED_SPRINT = 250.0
-		
+var czyWlaczycStrzake = false
+var ktoraStrzalka = portal1pos
+func mechanikaStrzalki():
+	pokazStrzakeTimer.start()
+	if Global.currentLevel == 0:
+		ktoraStrzalka = portal1pos
+	elif Global.currentLevel == 1:
+		ktoraStrzalka = portal2pos
+	elif Global.currentLevel == 2:
+		ktoraStrzalka = portal3pos
+	else:
+		ktoraStrzalka = portal4pos
+	await pokazStrzakeTimer.timeout # 
+	czyWlaczycStrzake = true
+
+
 func _physics_process(delta: float) -> void:
+	if czyWlaczycStrzake:
+		var dystans = global_position.distance_to(ktoraStrzalka)
+		
+		if dystans < 30.0:
+			strzalka.visible = false
+		else:
+			strzalka.visible = true
+			
+			var czas = Time.get_ticks_msec() / 1000.0
+			
+
+			var puls_mnoznik = 1.0 + sin(czas * 4.0) * 0.15
+			strzalka.scale = Vector2(0.036, 0.036) * puls_mnoznik
+			
+
+			strzalka.offset.y = sin(czas * 3.0) * 30.0
+
+			var roznica_x = ktoraStrzalka.x - global_position.x
+			if abs(roznica_x) > 15.0:
+				strzalka.flip_h = roznica_x < 0
+	else:
+		strzalka.visible = false
 	
 
 	cooldownAnim()
