@@ -5,6 +5,8 @@ extends Area2D
 @onready var player = get_tree().get_first_node_in_group("Player")
 var was_activated: bool = false 
 var ui_tween: Tween
+
+var portalPosition = Vector2(299.0, 439.0)
 var ZombieTexts: Array[String] = [
 	"Aim for the head!",
 	"They like brains",
@@ -37,10 +39,13 @@ func _ready() -> void:
 		was_activated = true 
 		player.has_gun = true
 		if Global.lastSlayer == "zombie":
-			checkpoint_label.text = ZombieTexts.pick_random()
+			if !is_starting_checkpoint:
+				checkpoint_label.text = ZombieTexts.pick_random()
 		else:
-			checkpoint_label.text = deadTexts.pick_random()
-		show_checkpoint_animation()
+			if !is_starting_checkpoint:
+				checkpoint_label.text = deadTexts.pick_random()
+		if !is_starting_checkpoint:
+			show_checkpoint_animation()
 
 	
 	elif is_starting_checkpoint:

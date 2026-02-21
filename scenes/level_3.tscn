@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://dq78bnkpr2gj4"]
+[gd_scene load_steps=81 format=4 uid="uid://dq78bnkpr2gj4"]
 
 [ext_resource type="Texture2D" uid="uid://44x0ppusrtx8" path="res://graphic/sciana13.png" id="1_ciptj"]
 [ext_resource type="Script" uid="uid://db4iqbkp7b3mj" path="res://scenes/level_3.gd" id="1_jnlnj"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bacewamobby6l" path="res://scenes/diamond_counter.tscn" id="34_6pvhj"]
 [ext_resource type="Shader" uid="uid://6ly3v7af2hky" path="res://scenes/chromaticAberration.gdshader" id="35_tofye"]
 [ext_resource type="PackedScene" uid="uid://c85nsd8s2dlhj" path="res://scenyGlobalne/pause_menu.tscn" id="36_r8q02"]
+[ext_resource type="PackedScene" uid="uid://cu66a1jei48p8" path="res://scenes/undermapteleport.tscn" id="37_jnlnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50287"]
 texture = ExtResource("1_ciptj")
@@ -1115,6 +1116,7 @@ kordyLobby = Vector2(621, 277)
 
 [node name="checkpoint4" parent="CheckPoints" instance=ExtResource("26_n4i7c")]
 position = Vector2(2519, 933)
+is_starting_checkpoint = true
 
 [node name="checkpoint2" parent="CheckPoints" instance=ExtResource("26_n4i7c")]
 position = Vector2(4483, 755)
@@ -1569,6 +1571,36 @@ tresc = "JUMP TWICE IF THE SPIDER IS ON YOUR HEAD!"
 position = Vector2(2740, 937)
 collision_mask = 2
 tresc = "YOU CAN COUNTER ENEMIES WITH A SHIELD (Q)"
+
+[node name="tepacz" type="Marker2D" parent="."]
+position = Vector2(2511, 925)
+
+[node name="undermapteleport" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(1917, 226)
+
+[node name="undermapteleport2" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(3486, 3)
+
+[node name="undermapteleport3" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(5876, -12)
+
+[node name="undermapteleport4" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(6431, 166)
+
+[node name="undermapteleport5" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(8079, 768)
+
+[node name="undermapteleport6" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(6278, 1087)
+
+[node name="undermapteleport7" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(3736, 1150)
+
+[node name="undermapteleport8" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(1247, 1147)
+
+[node name="undermapteleport9" parent="." instance=ExtResource("37_jnlnj")]
+position = Vector2(1021, 664)
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PortalTimer" to="Player" method="_on_portal_timer_timeout"]

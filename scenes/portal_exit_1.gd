@@ -34,13 +34,8 @@ func _process(_delta):
 			$EnterTimer.start()
 
 func _on_enter_timer_timeout():
-	var target_spawn_name: String = "DefaultSpawn"
-	Global.target_spawn_name = target_spawn_name
 	
-	# Ziana sceny
-	Global.last_checkpoint_pos = kordyLobby
-	Global.last_checkpoint_pos = Vector2.ZERO 
-	
+	Global.target_spawn_name ='MenuStart'
 	get_tree().change_scene_to_file("res://scenes/level.tscn")
 
 

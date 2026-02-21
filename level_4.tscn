@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://dytkaf8y2smh1"]
+[gd_scene load_steps=78 format=4 uid="uid://dytkaf8y2smh1"]
 
 [ext_resource type="Texture2D" uid="uid://44x0ppusrtx8" path="res://graphic/sciana13.png" id="1_beulo"]
 [ext_resource type="Script" uid="uid://ccqi007tnlqsn" path="res://level_4.gd" id="1_o37gb"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://c85nsd8s2dlhj" path="res://scenyGlobalne/pause_menu.tscn" id="36_ldc6e"]
 [ext_resource type="PackedScene" uid="uid://bkdfccv3t348p" path="res://scenes/fireball_dispenser.tscn" id="37_v6tvd"]
 [ext_resource type="PackedScene" uid="uid://ckdlv04tkolky" path="res://scenes/shaking_floor.tscn" id="38_454oc"]
+[ext_resource type="PackedScene" uid="uid://cu66a1jei48p8" path="res://scenes/undermapteleport.tscn" id="38_o37gb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pbux"]
 texture = ExtResource("1_beulo")
@@ -1006,7 +1007,7 @@ tile_set = SubResource("TileSet_g1hy3")
 collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("18_d8dyn")]
-position = Vector2(332, 436)
+position = Vector2(302, 436)
 
 [node name="PortalTimer" type="Timer" parent="Player" groups=["Player"]]
 one_shot = true
@@ -1441,6 +1442,45 @@ destroy_time = 0.7
 [node name="ShakingFloor6" parent="." instance=ExtResource("38_454oc")]
 position = Vector2(1920, 769)
 destroy_time = 1.0
+
+[node name="tepacz" type="Marker2D" parent="."]
+position = Vector2(289, 437)
+
+[node name="undermapteleport" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(238, -316)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport2" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(2499, 7)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport3" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(4871, -7)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport4" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(5498, 613)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport5" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(4567, 1261)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport6" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(2374, 950)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport7" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(-163, 969)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport8" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(-229, 637)
+spawn_point = NodePath("../tepacz")
+
+[node name="undermapteleport9" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("38_o37gb")]
+position = Vector2(-1172, 187)
+spawn_point = NodePath("../tepacz")
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PortalTimer" to="Player" method="_on_portal_timer_timeout"]

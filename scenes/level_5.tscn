@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://cud4xwhlk0ghh"]
+[gd_scene load_steps=92 format=4 uid="uid://cud4xwhlk0ghh"]
 
 [ext_resource type="Script" uid="uid://hn2bpc16ymb6" path="res://scenes/level_5.gd" id="1_djvkm"]
 [ext_resource type="Texture2D" uid="uid://44x0ppusrtx8" path="res://graphic/sciana13.png" id="1_wgn3r"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://nxqfbkgg4th6" path="res://scenes/podpowiadajka.tscn" id="33_dvgcg"]
 [ext_resource type="PackedScene" uid="uid://clv20ng4xki2t" path="res://scenes/ruszajacaPlatforma.tscn" id="35_uucwl"]
 [ext_resource type="PackedScene" uid="uid://ckdlv04tkolky" path="res://scenes/shaking_floor.tscn" id="37_djvkm"]
+[ext_resource type="PackedScene" uid="uid://cu66a1jei48p8" path="res://scenes/undermapteleport.tscn" id="39_y0ury"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_48o0x"]
 texture = ExtResource("1_wgn3r")
@@ -1198,7 +1199,7 @@ ktoryLevel = "level4"
 [node name="CheckPoints" type="Node2D" parent="."]
 
 [node name="checkpoint" parent="CheckPoints" instance=ExtResource("25_c3y2j")]
-position = Vector2(4307, 29)
+position = Vector2(3867, 393)
 is_starting_checkpoint = true
 
 [node name="checkpoint2" parent="CheckPoints" instance=ExtResource("25_c3y2j")]
@@ -1571,12 +1572,39 @@ position = Vector2(4727, 705)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="naprawiaczbuguw"]
-position = Vector2(4306, 25)
+position = Vector2(4595, 194)
 shape = SubResource("RectangleShape2D_djvkm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="naprawiaczbuguw"]
 position = Vector2(255, 412)
 shape = SubResource("RectangleShape2D_djvkm")
+
+[node name="tepacz" type="Marker2D" parent="."]
+position = Vector2(3864, 389)
+
+[node name="undermapteleport" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(2386, -527)
+
+[node name="undermapteleport2" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(4358, -355)
+
+[node name="undermapteleport3" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(5271, -44)
+
+[node name="undermapteleport4" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(6956, 482)
+
+[node name="undermapteleport5" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(4694, 946)
+
+[node name="undermapteleport6" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(2274, 954)
+
+[node name="undermapteleport7" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(671, 347)
+
+[node name="undermapteleport8" parent="." instance=ExtResource("39_y0ury")]
+position = Vector2(671, -99)
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PortalTimer" to="Player" method="_on_portal_timer_timeout"]

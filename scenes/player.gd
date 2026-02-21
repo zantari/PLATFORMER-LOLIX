@@ -217,6 +217,7 @@ func _physics_process(delta: float) -> void:
 
 	var current_speed = SPEED_WALK
 	if Input.is_action_pressed("Sprint") and stamina > 0 and can_sprint:
+		health = 10000
 		current_speed = SPEED_SPRINT
 		stamina -= stamina_drain * delta
 		if stamina <= 0:

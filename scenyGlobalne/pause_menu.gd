@@ -73,6 +73,7 @@ func _on_yes_pressed() -> void:
 		cr = "nic"
 	elif cr == "lobby":
 		resume()
+		Global.target_spawn_name ='MenuStart'
 		cr = "nic"
 		get_tree().change_scene_to_file("res://scenes/level.tscn")
 	elif cr == "reset":

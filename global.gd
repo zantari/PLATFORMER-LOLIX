@@ -163,10 +163,11 @@ func reset_game():
 	temp_collected_list.clear()
 	
 
-	save_game() 
+	
 
 
 	get_tree().change_scene_to_file("res://scenes/boot.tscn")
+	save_game() 
 
 func save_game():
 	var config = ConfigFile.new()

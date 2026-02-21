@@ -477,7 +477,7 @@ scale = Vector2(0.037083335, 0.03637856)
 texture = ExtResource("41_2dvfe")
 
 [node name="pokazStrzakeTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 1.5
 one_shot = true
 
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
