@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dyxomf0byld4o"]
+[gd_scene load_steps=57 format=3 uid="uid://dyxomf0byld4o"]
 
 [ext_resource type="Script" uid="uid://d3oyx6fptafqx" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Shader" uid="uid://dg68j34060cbx" path="res://scenes/shiledPlayer.gdshader" id="1_hax0n"]
@@ -41,6 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://bw6545ktg4aeh" path="res://graphic/playerShield/playerShieldGray.png" id="39_j2b1d"]
 [ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="40_cs1tg"]
 [ext_resource type="Texture2D" uid="uid://cix2hqyhplvqr" path="res://graphic/strzalkaWPRAWO.png" id="41_2dvfe"]
+[ext_resource type="AudioStream" uid="uid://csyxqmghs6iat" path="res://sounds/walkingSounds2.mp3" id="42_giy8y"]
+[ext_resource type="AudioStream" uid="uid://bk6k3n66igfgg" path="res://sounds/Retro Jump StereoUP Simple 05.wav" id="43_fdfoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4otl"]
 shader = ExtResource("1_hax0n")
@@ -477,6 +479,12 @@ texture = ExtResource("41_2dvfe")
 [node name="pokazStrzakeTimer" type="Timer" parent="."]
 wait_time = 2.5
 one_shot = true
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_giy8y")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("43_fdfoy")
 
 [connection signal="timeout" from="ShieldArea/trwanieTarczy" to="." method="_on_trwanie_tarczy_timeout"]
 [connection signal="timeout" from="ShieldArea/cooldownTarczy" to="." method="_on_cooldown_tarczy_timeout"]

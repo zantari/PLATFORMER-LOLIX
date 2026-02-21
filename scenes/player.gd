@@ -33,11 +33,11 @@ var portal1pos = Vector2(310, 290)
 var portal2pos = Vector2(616.0, 290.0)
 var portal3pos = Vector2(1256.0, 290.0)
 var portal4pos = Vector2(1562.0, 290.0)
-
-
+@onready var walk_sound = $WalkSound
+var last_sound_position: float = 0.0
 var spider
 var duch
-
+@onready var jump_sound = $JumpSound
 var isShieldOn = false
 var can_use_shield = true
 var isHittedDuringShield = false
@@ -234,6 +234,27 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction_x * current_speed
 
 	move_and_slide()
+	
+	# Logika dźwięku chodzenia z zapamiętywaniem pozycji
+	if is_on_floor() and abs(velocity.x) > 10:
+		if not walk_sound.playing:
+			# Jeśli dźwięk był wcześniej wyciszany, zatrzymaj Tweena
+			var tween = create_tween()
+			walk_sound.play(last_sound_position)
+			# Szybkie podgłośnienie do 0 dB (normalna głośność)
+			tween.tween_property(walk_sound, "volume_db", 0.0, 0.1)
+	else:
+		if walk_sound.playing:
+			# Zapisujemy pozycję przed wyciszeniem
+			last_sound_position = walk_sound.get_playback_position()
+			
+			# Płynne wyciszanie (Fade Out)
+			var tween = create_tween()
+			# Wyciszamy do -40 dB w ciągu 0.2 sekundy
+			tween.tween_property(walk_sound, "volume_db", -40.0, 0.2)
+			# Po wyciszeniu faktycznie stopujemy odtwarzacz
+			tween.tween_callback(walk_sound.stop)
+	
 
 	if can_animate:
 		get_animation()
@@ -251,6 +272,7 @@ func get_input():
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -230
+		jump_sound.play()
 		
 		
 

@@ -9,6 +9,8 @@ func _ready():
 	shake_amount = 0.2
 	# Ustawienie kierunku sprite'a na starcie
 	$Sprite2D.flip_h = direction < 0
+	if has_node("ShootSound"):
+		$ShootSound.play()
 
 func _process(delta):
 	position.x += speed * direction * delta
