@@ -20,7 +20,6 @@ func _ready() -> void:
 	are_you_sure_kontener.visible = false
 	
 	setup_focus_sounds()
-
 func setup_focus_sounds():
 	# Szukamy wszystkich przycisków w obu kontenerach
 	var buttons = menu_kontener.get_children() + are_you_sure_kontener.get_children()
@@ -43,6 +42,7 @@ func play_click():
 
 func resume():
 	get_tree().paused = false
+	print("resume")
 	$AnimationPlayer.play_backwards("blur")
 	self.hide()
 	self.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -53,6 +53,8 @@ func resume():
 		focus_owner.release_focus()
 
 func pause():
+	print("pausa")
+	get_tree().call_group("podpowiadajka", "close_sequence")
 	get_tree().paused = true
 	cr = "nic"
 	$AnimationPlayer.play("blur")

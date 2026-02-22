@@ -13,9 +13,8 @@ bg_color = Color(0.56078434, 0.60784316, 0.63529414, 0.4862745)
 border_color = Color(0.56144136, 0.8674538, 0.83455896, 1)
 anti_aliasing_size = 1.617
 
-[node name="Podpowiadajka" type="Area2D"]
+[node name="Podpowiadajka" type="Area2D" groups=["podpowiadajka"]]
 script = ExtResource("1_205f6")
-tresc = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

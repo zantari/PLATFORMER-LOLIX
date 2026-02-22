@@ -43,6 +43,7 @@ func _on_clear_ui(caller):
 	label.modulate.a = 0
 	rect.modulate.a = 0
 	btn.modulate.a = 0
+	
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
