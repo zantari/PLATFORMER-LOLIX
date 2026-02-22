@@ -9,6 +9,7 @@ var facing_right := true
 @onready var timer = $Timer
 @onready var marker = $Marker2D
 @onready var sprite = $AnimatedSprite2D
+@onready var shoot_sound = $ShootSound # Dodajemy referencję
 const fireball_scene: PackedScene = preload("res://scenes/fire_ball.tscn")
 @export var blood_color: Color = Color.DARK_RED
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -54,10 +55,15 @@ func _on_timer_timeout() -> void:
 
 		
 func shoot():
-
 	if fire_ball:
 		is_shooting = true
 		$AnimatedSprite2D.play("shoot")
+		
+		# --- Odtwarzanie dźwięku ---
+		if shoot_sound:
+			shoot_sound.pitch_scale = randf_range(0.9, 1.1) # Lekka losowość dla lepszego efektu
+			shoot_sound.play()
+		# ---------------------------
 		
 		var bullet = fire_ball.instantiate()
 		get_tree().root.add_child(bullet)

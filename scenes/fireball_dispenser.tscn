@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkdfccv3t348p"]
+[gd_scene load_steps=5 format=3 uid="uid://bkdfccv3t348p"]
 
 [ext_resource type="Script" uid="uid://brksrty75pso5" path="res://fireball_dispenser.gd" id="1_mcl1d"]
 [ext_resource type="Texture2D" uid="uid://blf6waj4oeobm" path="res://graphic/armataxd.png" id="2_mcl1d"]
+[ext_resource type="AudioStream" uid="uid://yv4x2visop0y" path="res://sounds/cannonStart.wav" id="3_kb18j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0nv7"]
 size = Vector2(35, 36.5)
@@ -14,11 +15,18 @@ position = Vector2(0, 1.75)
 shape = SubResource("RectangleShape2D_x0nv7")
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.2689999999999997
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mcl1d")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kb18j")
+
+[node name="VisibleNotifer" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-18, -17, 36, 37)
+enable_node_path = NodePath("../ShootSound")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_t_imer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

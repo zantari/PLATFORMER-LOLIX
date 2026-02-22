@@ -57,13 +57,23 @@ func start_sequence():
 	Global.clear_ui.emit(self)
 	if ui_tween: ui_tween.kill()
 
-
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		player.input_locked = true
-		# Opcjonalnie: ustawienie animacji IDLE, żeby nie "biegł" w miejscu
+		
+		# Sprawdzamy stan gracza w momencie wejścia
+		if player.is_on_floor():
+			# Jeśli jest na ziemi, ustawiamy pozę stania (IDLE)
+			if player.has_node("AnimatedSprite2D"):
+				player.get_node("AnimatedSprite2D").play("idle_gun")
+		else:
+			# Jeśli jest w powietrzu, ustawiamy pozę skoku (JUMP)
+			if player.has_node("AnimatedSprite2D"):
+				player.get_node("AnimatedSprite2D").play("jump_gun")
+		
+		# Zatrzymujemy animację na konkretnej klatce, żeby postać "zastygła"
 		if player.has_node("AnimatedSprite2D"):
-			player.set_anim("idle")
+			player.get_node("AnimatedSprite2D").stop()
 	label.text = tresc
 	label.visible = true
 	rect.visible = true
@@ -109,16 +119,18 @@ func close_sequence():
 	close_tween.chain().tween_callback(finish_closing_and_start_timer)
 
 func finish_closing_and_start_timer():
-
 	label.visible = false
 	rect.visible = false
 	btn.visible = false
 
-	# --- ODMROŻENIE GRACZA ---
+	# --- ODMROŻENIE GRACZA I JEGO ANIMACJI ---
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		player.input_locked = false
-	# -------------------------
+		# Puszczamy animację, żeby postać nie była sztywna po wyjściu z menu
+		if player.has_node("AnimatedSprite2D"):
+			player.get_node("AnimatedSprite2D").play() 
+	# -----------------------------------------
 
 	get_tree().create_timer(3.0).timeout.connect(respawn_checkpoint)
 

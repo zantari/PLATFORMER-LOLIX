@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy72f1mu6aboi"]
+
+[ext_resource type="AudioStream" uid="uid://g82d1o7knw60" path="res://sounds/SOUNDTRACK.ogg" id="1_lcmjm"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_lcmjm")
+volume_db = 4.77
+autoplay = true
