@@ -3,6 +3,7 @@ extends Area2D
 @onready var checkpoint_label: Label = $CheckpointUI/CheckpointLabel
 @export var is_starting_checkpoint: bool = false 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var checkpoint_sound: AudioStreamPlayer2D = $CheckpointSound
 var was_activated: bool = false 
 var ui_tween: Tween
 
@@ -63,21 +64,22 @@ func _on_clear_ui(caller):
 		checkpoint_label.modulate.a = 0
 		
 func _on_body_entered(body: Node2D) -> void:
-	
 	if body.is_in_group("Player") and not was_activated:
+		# --- DŹWIĘK CHECKPOINTU ---
+		if checkpoint_sound:
+			checkpoint_sound.play()
+		# --------------------------
+
 		print("NOWY CHECKPOINT NA POZYCJI ", global_position)
 		
 		Global.last_checkpoint_pos = global_position
 		Global.save_progress_at_checkpoint()
 		
-		
-		
-		
 		checkpoint_label.text = "CHECKPOINT"
 		Global.target_spawn_name = "nie spawn"
 		show_checkpoint_animation()
 
-		was_activated = true 
+		was_activated = true
 
 
 func show_checkpoint_animation() -> void:

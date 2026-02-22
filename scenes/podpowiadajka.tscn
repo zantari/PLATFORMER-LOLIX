@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://nxqfbkgg4th6"]
+[gd_scene load_steps=7 format=3 uid="uid://nxqfbkgg4th6"]
 
 [ext_resource type="Script" uid="uid://li524j31pncj" path="res://scenes/podpowiadajka.gd" id="1_205f6"]
 [ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="1_hn6hd"]
 [ext_resource type="Texture2D" uid="uid://b42h5w2gotn3" path="res://graphic/qm.png" id="3_rvfee"]
+[ext_resource type="AudioStream" uid="uid://oj36rq461y18" path="res://sounds/ClickSound.wav" id="4_0pmvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwjju"]
 size = Vector2(32, 46)
@@ -14,6 +15,7 @@ anti_aliasing_size = 1.617
 
 [node name="Podpowiadajka" type="Area2D"]
 script = ExtResource("1_205f6")
+tresc = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -58,7 +60,6 @@ offset_left = -483.0
 offset_top = -121.0
 grow_horizontal = 0
 grow_vertical = 0
-focus_mode = 0
 theme_override_colors/font_color = Color(0.8745098, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0.9005368, 0.88144034, 0.74035555, 0.5019608)
 theme_override_fonts/font = ExtResource("1_hn6hd")
@@ -70,6 +71,9 @@ text = "SKIP"
 modulate = Color(1, 1, 1, 0.49019608)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_rvfee")
+
+[node name="SkipSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0pmvb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="pressed" from="CheckpointUI/SKIP" to="." method="_on_skip_pressed"]

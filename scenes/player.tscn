@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dyxomf0byld4o"]
+[gd_scene load_steps=62 format=3 uid="uid://dyxomf0byld4o"]
 
 [ext_resource type="Script" uid="uid://d3oyx6fptafqx" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Shader" uid="uid://dg68j34060cbx" path="res://scenes/shiledPlayer.gdshader" id="1_hax0n"]
@@ -41,8 +41,13 @@
 [ext_resource type="Texture2D" uid="uid://bw6545ktg4aeh" path="res://graphic/playerShield/playerShieldGray.png" id="39_j2b1d"]
 [ext_resource type="FontFile" uid="uid://kg08gr31fkiq" path="res://fonts/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="40_cs1tg"]
 [ext_resource type="Texture2D" uid="uid://cix2hqyhplvqr" path="res://graphic/strzalkaWPRAWO.png" id="41_2dvfe"]
-[ext_resource type="AudioStream" uid="uid://csyxqmghs6iat" path="res://sounds/walkingSounds2.mp3" id="42_giy8y"]
-[ext_resource type="AudioStream" uid="uid://bk6k3n66igfgg" path="res://sounds/Retro Jump StereoUP Simple 05.wav" id="43_fdfoy"]
+[ext_resource type="AudioStream" uid="uid://buepjwhsedu8a" path="res://sounds/playerWalk.wav" id="42_g5jhy"]
+[ext_resource type="AudioStream" uid="uid://dpwckk4pva54k" path="res://sounds/jumpPlayer.wav" id="43_g5jhy"]
+[ext_resource type="AudioStream" uid="uid://ct8yi1jwl8cm2" path="res://sounds/deathSOundPLayer.mp3" id="44_hhpqf"]
+[ext_resource type="AudioStream" uid="uid://b0tqfdq7xmhov" path="res://sounds/gettingDMG.wav" id="45_g5jhy"]
+[ext_resource type="AudioStream" uid="uid://xop3b1i144sg" path="res://sounds/shiledActivate.wav" id="46_holxr"]
+[ext_resource type="AudioStream" uid="uid://ld1ocv8lplb4" path="res://sounds/shieldReady.wav" id="47_mx1m4"]
+[ext_resource type="AudioStream" uid="uid://d2tphf50d680" path="res://sounds/shieldHit.wav" id="48_4gjji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4otl"]
 shader = ExtResource("1_hax0n")
@@ -481,11 +486,27 @@ wait_time = 1.5
 one_shot = true
 
 [node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("42_giy8y")
+stream = ExtResource("42_g5jhy")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("43_fdfoy")
+stream = ExtResource("43_g5jhy")
 
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("44_hhpqf")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("45_g5jhy")
+
+[node name="ShieldSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_holxr")
+
+[node name="ShieldReadySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("47_mx1m4")
+
+[node name="ShieldHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("48_4gjji")
+
+[connection signal="area_entered" from="ShieldArea" to="." method="_on_shield_area_area_entered"]
 [connection signal="timeout" from="ShieldArea/trwanieTarczy" to="." method="_on_trwanie_tarczy_timeout"]
 [connection signal="timeout" from="ShieldArea/cooldownTarczy" to="." method="_on_cooldown_tarczy_timeout"]
 [connection signal="timeout" from="Timers/CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

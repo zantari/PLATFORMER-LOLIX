@@ -26,7 +26,7 @@ var can_regenerate := false
 @onready var shield_label = $shieldBarCanv/ShieldTimerLabel # Dostosuj ścieżkę
 var isDying = false
 var can_animate = true
-
+@onready var shield_sound = $ShieldSound
 @onready var strzalka = $Strzalka
 @onready var pokazStrzakeTimer = $pokazStrzakeTimer
 var portal1pos = Vector2(310, 290)
@@ -41,7 +41,7 @@ var duch
 var isShieldOn = false
 var can_use_shield = true
 var isHittedDuringShield = false
-
+var input_locked = false
 var isGhostInside = false
 
 
@@ -156,6 +156,9 @@ func mechanikaStrzalki():
 
 
 func _physics_process(delta: float) -> void:
+	if input_locked:
+		velocity.x = 0 # Zatrzymuje ruch poziomy
+		return # Ignoruje resztę kodu (skok, strzał, poruszanie się)
 	if czyWlaczycStrzake:
 		var dystans = global_position.distance_to(ktoraStrzalka)
 		
@@ -239,22 +242,12 @@ func _physics_process(delta: float) -> void:
 	# Logika dźwięku chodzenia z zapamiętywaniem pozycji
 	if is_on_floor() and abs(velocity.x) > 10:
 		if not walk_sound.playing:
-			# Jeśli dźwięk był wcześniej wyciszany, zatrzymaj Tweena
-			var tween = create_tween()
-			walk_sound.play(last_sound_position)
-			# Szybkie podgłośnienie do 0 dB (normalna głośność)
-			tween.tween_property(walk_sound, "volume_db", 0.0, 0.1)
+			walk_sound.volume_db = 0.0 # Wymuszamy głośność na start
+			walk_sound.play() # Puszczamy od początku (to lepiej współgra ze skokami)
 	else:
+		# Jeśli gracz skacze lub stoi - po prostu stopujemy
 		if walk_sound.playing:
-			# Zapisujemy pozycję przed wyciszeniem
-			last_sound_position = walk_sound.get_playback_position()
-			
-			# Płynne wyciszanie (Fade Out)
-			var tween = create_tween()
-			# Wyciszamy do -40 dB w ciągu 0.2 sekundy
-			tween.tween_property(walk_sound, "volume_db", -40.0, 0.2)
-			# Po wyciszeniu faktycznie stopujemy odtwarzacz
-			tween.tween_callback(walk_sound.stop)
+			walk_sound.stop()
 	
 
 	if can_animate:
@@ -320,18 +313,21 @@ func get_facing_direction():
 	
 func get_damage(amount):
 	if vulnerable:
-		
 		if isShieldOn:
 			amount = 0
-			#isHittedDuringShield = true
-			#isShieldOn = false
-			#$ShieldArea/AnimatedSprite2D.visible = false
-			#can_use_shield = false
-			#$ShieldArea/trwanieTarczy.stop()
-			#$ShieldArea/cooldownTarczy.start()
-			
 			
 		health -= amount
+		
+		# --- ZMODYFIKOWANA LOGIKA DŹWIĘKU ---
+		if health <= 0:
+			# Jeśli to śmiertelny cios, nie puszczamy dźwięku obrażeń
+			die() 
+		else:
+			# Jeśli gracz przeżył, puszczamy dźwięk bólu (tylko jeśli dostał faktyczny dmg)
+			if amount > 0 and has_node("HurtSound"):
+				$HurtSound.pitch_scale = randf_range(0.9, 1.1)
+				$HurtSound.play()
+		# ------------------------------------
 		
 		animate_vignette()
 		can_regenerate = false    
@@ -339,12 +335,10 @@ func get_damage(amount):
 		$Timers/WaitTimer.start(3.0)
 		vulnerable = false
 		$Timers/InvicibilityTimer.start()
+		
 		var tween = create_tween() 
 		tween.tween_property($AnimatedSprite2D,"material:shader_parameter/amount",1.0,0.0) 
-		tween.tween_property($AnimatedSprite2D,"material:shader_parameter/amount",0.0,0.1).set_delay(0.1) 
-		if health <= 0:
-			die()
-
+		tween.tween_property($AnimatedSprite2D,"material:shader_parameter/amount",0.0,0.1).set_delay(0.1)
 
 		
 func die():
@@ -354,6 +348,9 @@ func die():
 	isDying = true
 	health = 0
 	$Timers/GainHealth.stop()
+	
+	if has_node("DeathSound"):
+		$DeathSound.play()
 	# Zamrożenie postaci
 	set_physics_process(false)
 	set_process(false)
@@ -424,7 +421,7 @@ func animate_vignette():
 	
 	# Natychmiast czerwień (uderzenie)
 	mat.set_shader_parameter("vignette_color", Color(0.7, 0, 0, 1.0))
-	mat.set_shader_parameter("outer_radius", 1.5)
+	mat.set_shader_parameter("outer_radius", 0.7)
 	
 	# Powrót do czerni (zanikanie bólu)
 	vignette_tween.parallel().tween_property(mat, "shader_parameter/vignette_color", Color(0, 0, 0, 1.0), 0.5)
@@ -535,7 +532,8 @@ func shield():
 		$ShieldArea/trwanieTarczy.start()
 		
 	
-	
+		if shield_sound:
+			shield_sound.play()
 	
 		
 	
@@ -544,6 +542,9 @@ func shield():
 func _on_cooldown_tarczy_timeout() -> void:
 	can_use_shield = true
 	isHittedDuringShield = false
+	
+	if has_node("ShieldReadySound"):
+		$ShieldReadySound.play()
 
 
 func _on_trwanie_tarczy_timeout() -> void:

@@ -22,6 +22,7 @@ var escape_timer := 0.0
 var escaping: bool = false
 var ischasing = false
 var isDying = false
+@onready var notice_sound = $NoticeSound
 
 
 
@@ -103,14 +104,22 @@ func get_target():
 	   not forward and position.distance_to(marker1.position) < 10:
 		forward = not forward
 		
-	# Sprawdzamy, czy duch właśnie TERAZ zaczyna gonić (moment przejścia)
 	var distance_to_player = position.distance_to(player.position)
+	
+	# Sprawdzamy warunek zauważenia gracza
 	if (distance_to_player < notice_radius and not escaping and not overlaps_body(player)) or ischasing:
 		
 		# JEŚLI TO PIERWSZY MOMENT POGONI:
 		if not ischasing:
 			ischasing = true
-			start_chromatic_effect(true, false) # Włączamy efekt
+			start_chromatic_effect(true, false)
+			
+			# --- DODANY DŹWIĘK ZAUWAŻENIA ---
+			if notice_sound:
+				# Losowy pitch sprawi, że każdy duch będzie brzmiał nieco inaczej
+				notice_sound.pitch_scale = randf_range(0.8, 1.2)
+				notice_sound.play()
+			# --------------------------------
 			
 		target = player
 		ischasing = true

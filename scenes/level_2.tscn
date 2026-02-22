@@ -999,7 +999,7 @@ tile_set = SubResource("TileSet_etecx")
 collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("1_pbc48")]
-position = Vector2(302, 432)
+position = Vector2(300, 432)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(4, 5)
@@ -1030,7 +1030,7 @@ position = Vector2(2650, 987)
 [node name="Portals" type="Node2D" parent="."]
 
 [node name="PortalExit1" parent="Portals" groups=["Player"] instance=ExtResource("23_m6wqs")]
-position = Vector2(299, 439)
+position = Vector2(297, 443)
 collision_mask = 3
 
 [node name="ExitFromLvl1" parent="Portals" instance=ExtResource("24_vfjea")]
@@ -1390,7 +1390,7 @@ collision_mask = 2
 tresc = "YOU CAN HOLD THE JUMP BUTTON TO JUMP HIGHER"
 
 [node name="tepacz" type="Marker2D" parent="."]
-position = Vector2(288, 435)
+position = Vector2(585, 489)
 
 [node name="undermapteleport" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("35_vwjju")]
 position = Vector2(214, -339)

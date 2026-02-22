@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cv06dgnyh7jdg"]
+[gd_scene load_steps=19 format=3 uid="uid://cv06dgnyh7jdg"]
 
 [ext_resource type="Script" uid="uid://d085rvllqb105" path="res://bee.gd" id="1_vie5o"]
 [ext_resource type="Texture2D" uid="uid://dp6i7sr2702jl" path="res://graphic/ghost/ghost.png" id="2_ogg2i"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dupe1d8mww0nt" path="res://graphic/progressBars/progresbar4.png" id="7_yiyqc"]
 [ext_resource type="Texture2D" uid="uid://1b2gmr5tmrk1" path="res://graphic/ghost/ghostScary6.png" id="8_h0c8m"]
 [ext_resource type="Texture2D" uid="uid://cej6u6pivt3c1" path="res://graphic/ghost/ghostScaryDie.png" id="9_vq5cx"]
+[ext_resource type="AudioStream" uid="uid://dhps6epxtv840" path="res://sounds/ghostSound.wav" id="15_gnnah"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf6nb"]
 resource_local_to_scene = true
@@ -112,6 +113,9 @@ polygon = PackedVector2Array(16, 6, 16, 5, 15, 5, 15, 4, 10, 4, 10, 3, 9, 3, 9, 
 [node name="TimerDoZnikniecia" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="NoticeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_gnnah")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
