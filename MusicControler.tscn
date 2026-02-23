@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy72f1mu6aboi"]
+[gd_scene load_steps=3 format=3 uid="uid://cmojef76ebcd8"]
 
 [ext_resource type="AudioStream" uid="uid://g82d1o7knw60" path="res://sounds/SOUNDTRACK.ogg" id="1_lcmjm"]
+[ext_resource type="Script" uid="uid://kad2pretm805" path="res://music_controler.gd" id="2_wgb76"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_lcmjm")
-volume_db = 4.77
+volume_db = 3.0
 autoplay = true
+max_distance = 9.223372e+18
+script = ExtResource("2_wgb76")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://dq78bnkpr2gj4"]
+[gd_scene load_steps=83 format=4 uid="uid://dq78bnkpr2gj4"]
 
 [ext_resource type="Texture2D" uid="uid://44x0ppusrtx8" path="res://graphic/sciana13.png" id="1_ciptj"]
 [ext_resource type="Script" uid="uid://db4iqbkp7b3mj" path="res://scenes/level_3.gd" id="1_jnlnj"]
@@ -37,6 +37,7 @@
 [ext_resource type="Shader" uid="uid://6ly3v7af2hky" path="res://scenes/chromaticAberration.gdshader" id="35_tofye"]
 [ext_resource type="PackedScene" uid="uid://c85nsd8s2dlhj" path="res://scenyGlobalne/pause_menu.tscn" id="36_r8q02"]
 [ext_resource type="PackedScene" uid="uid://cu66a1jei48p8" path="res://scenes/undermapteleport.tscn" id="37_jnlnj"]
+[ext_resource type="Script" uid="uid://c51egfr5252to" path="res://scenes/teleport.gd" id="38_nhai6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50287"]
 texture = ExtResource("1_ciptj")
@@ -937,6 +938,9 @@ _data = {
 shader = ExtResource("35_tofye")
 shader_parameter/amount = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vrl8"]
+size = Vector2(334, 117)
+
 [node name="level_3" type="Node2D"]
 script = ExtResource("1_jnlnj")
 
@@ -1187,6 +1191,7 @@ scale = Vector2(1.8789054, 1.6542969)
 color = Color(0.8834339, 0.42463818, 1.92523e-06, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_n7fpp")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D11" type="PointLight2D" parent="Lights"]
 position = Vector2(4537, 720)
@@ -1194,6 +1199,7 @@ scale = Vector2(1.8789054, 1.6542969)
 color = Color(0.8834339, 0.42463818, 1.92523e-06, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_n7fpp")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D12" type="PointLight2D" parent="Lights"]
 position = Vector2(5193, 903.99994)
@@ -1396,6 +1402,7 @@ scale = Vector2(1.2812518, 1.6289057)
 color = Color(0.78775924, 0.78775924, 0.78775924, 1)
 energy = 1.07
 texture = SubResource("GradientTexture2D_n7fpp")
+metadata/_edit_lock_ = true
 
 [node name="moonglight13" type="PointLight2D" parent="Lights"]
 position = Vector2(5120, 928)
@@ -1575,35 +1582,52 @@ tresc = "YOU CAN COUNTER ENEMIES WITH A SHIELD (Q)"
 [node name="tepacz" type="Marker2D" parent="."]
 position = Vector2(2530, 929)
 
-[node name="undermapteleport" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(1038, 27)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport2" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport2" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(3486, 3)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport3" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport3" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(5876, -12)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport4" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport4" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(6431, 166)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport5" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport5" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(8079, 768)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport6" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport6" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(6278, 1087)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport7" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport7" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(3736, 1150)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport8" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport8" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(1247, 1147)
+spawn_point = NodePath("../tepacz")
 
-[node name="undermapteleport9" parent="." instance=ExtResource("37_jnlnj")]
+[node name="undermapteleport9" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("37_jnlnj")]
 position = Vector2(1021, 664)
+spawn_point = NodePath("../tepacz")
 
 [node name="MenuStart" type="Marker2D" parent="."]
 position = Vector2(2521, 935)
+
+[node name="teleport" type="Area2D" parent="."]
+collision_mask = 3
+script = ExtResource("38_nhai6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport"]
+position = Vector2(168, 727.5)
+shape = SubResource("RectangleShape2D_0vrl8")
 
 [connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
 [connection signal="timeout" from="Player/PortalTimer" to="Player" method="_on_portal_timer_timeout"]
